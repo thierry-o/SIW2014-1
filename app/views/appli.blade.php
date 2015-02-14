@@ -10,7 +10,7 @@
 // var_dump(Session::all());
 // var_dump(Input::all());
 //initialisation
-$BASE =$_SERVER['DOCUMENT_ROOT']."/projet1laravel/app/documents/". Auth::user()->util_pseudo;
+$BASE =$_SERVER['DOCUMENT_ROOT']."/SIW2014-1/app/documents/". Auth::user()->util_pseudo;
 $PHP_SELF=$_SERVER['PHP_SELF'];
 
 
