@@ -1,0 +1,81 @@
+<html>
+	<head>
+	 
+		<script type="text/javascript" src="js/fonctions.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+	</head>
+<body>
+	<h3>Nouveau Fichier</h3>
+<?php
+//return var_dump(Input::all());
+if ((!Input::has('validnouv')) | ($errors->has('nom')))//s'il y a des erreurs ou si c'est la première entrée, on affiche le formulaire
+{
+?>	
+		<form action="nouveauFichier" method="post">
+			Nom du Fichier : <input type="text" name="nom" id="nom" value="<?php echo Input::old('nom'); ?>" required/><br />
+			Nombre de champs : <input type="number" name="champs" nim="1" max="10" value="1" required><br />
+			Nombre de lignes : <input type="number" name="lignes" nim="1" max="10" value="1" required><br />
+
+<?php
+	if ($errors->has('nom'))//erreur sur le nom
+	{
+		echo $errors->first('nom');
+		echo "<br />";
+	}
+?>
+			</p>
+			<input type="submit" value="Valider" name="validnouv" />
+		</form>
+		<form action="appli" method="get">
+			<input type="hidden" name="dir" value="<?php echo Session::get('dossCourant'); ?>" />
+			<input type="submit" value="Annuler" name="Annuler" />
+		</form>
+<?php
+}
+else//sinon (pas d'erreur)
+{
+	$fich=Session::get('dossCourant')."/".Input::get('nom');
+	$nombre=Input::get('champs');
+	$ligne=Input::get('lignes')+2;
+	
+	if (!File::isFile($fich))//vérification de l'existence du Fichier
+	{
+		//$res = fopen($fich,"x");
+
+//		echo "Création réussie";
+//		var_dump(Input::all());
+//		echo "<script >BoutonValider();</script>";
+//		$liste = array('nombre' => Input::get('champs'));
+
+//$liste = array_add($liste, 'key', 'value');
+		echo "<form method=\"post\" action=\"nouveauFichier\">";
+		for ($i=1; $i<=$nombre;$i++)
+		{
+			echo "Champ $i :<br />
+				Nom : <input type=\"text\" name=\"nomChamp$i\" required><br />
+				Type : <select name=\"typeChamp$i\" id=\"typeChamp$i\">
+					<option value=\"text\">Texte</option>
+					<option value=\"number\">Nombre</option>
+					<option value=\"email\">Mail</option>
+				</select></br>";
+		}
+		echo "<input type=\"hidden\" value=\"".$nom."\" name=\"nom\" />";
+		echo "<input type=\"hidden\" value=\"".$nombre."\" name=\"champs\" />";
+		echo "<input type=\"hidden\" value=\"".$ligne."\" name=\"lignes\" />";
+		echo '<input type="submit" value="OK" name="validerChamps" />';
+		echo "</form>";
+	}
+	else
+	{
+		echo "Fichier déjà existant";
+?>
+		<form action="appli" method="get">
+			<input type="hidden" name="dir" value="<?php echo Session::get('dossCourant'); ?>" />
+			<input type="submit" value="OK" name="valider" />
+		</form>
+<?php
+	}
+}
+?>
+</body>
+</html>

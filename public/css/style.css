@@ -1,0 +1,29 @@
+body{
+font-family:Arial;
+
+margin-left:35%;
+margin-top:15%;
+}
+input
+{font-family:Arial;
+background-color:#AFEEEE;
+padding:3px;
+border:1px solid #00BFFF;
+border-radius:5px;
+}
+table
+{
+background-color:#DCDCDC;
+padding:3px;
+border:2px solid #00BFFF;
+border-radius:5px;
+}
+#bouton3
+{
+margin-left:17%;
+ font-weight: bold;
+background-color:#DCDCDC;
+padding:3px;
+border:1px solid #00BFFF;
+border-radius:5px;
+}
