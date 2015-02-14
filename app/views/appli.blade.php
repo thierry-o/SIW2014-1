@@ -79,9 +79,9 @@ function list_file($cur) {
 				$lecteur=substr($cur, 0, 1);
 				$doss=$lecteur.":".substr($cur, 2);
 //echo $doss."/".$file;
-
-				echo"<img src=\"img/icone_fichier.png\"/>&nbsp;$file<a href=\"lireFichier?fichier=".$doss."/".$file."\" title=\"Ouvrir\"><img src=\"img/modifier.png\" alt=\"Ouvrir\" \"></a>
-				<a href=\"suppFichier?fichier=".$doss."/".$file."\" title=\"Supprimer\"><img src=\"img/supprimer.gif\" alt=\"Supprimer\" \"></a><br/> ";
+				echo"<a href=\"choixFichier?fichier=".$file."&dossier=".$doss."\" title=\"Ouvrir\"><img src=\"img/icone_fichier.png\"/></a>&nbsp;$file";
+//				echo"<img src=\"img/icone_fichier.png\"/>&nbsp;$file<a href=\"lireFichier?fichier=".$doss."/".$file."\" title=\"Ouvrir\"><img src=\"img/modifier.png\" alt=\"Ouvrir\" \"></a>
+//				<a href=\"suppFichier?fichier=".$doss."/".$file."\" title=\"Supprimer\"><img src=\"img/supprimer.gif\" alt=\"Supprimer\" \"></a><br/> ";
 				//<input type=\"image\" src=\"img/supprimer.gif\" class=\"bouton1\" onClick=\"BoutonSupprimer()\"><br/> ";
 				
 			}
