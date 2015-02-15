@@ -24,8 +24,7 @@ Route::post('get',function(){
 
 Route::get('connexion', 'ConnexionController@getConnexion')->before('guest');
 Route::post('connexion', 'ConnexionController@postConnexion');
-Route::get('appli',  function()
-	{return View::make('appli');})->before('auth');
+Route::get('appli',  function()	{return View::make('appli');})->before('auth');
 Route::get('logout', 'LogoutController@getLogout')->before('auth');
 Route::get('nouveauFichier', 'NouveauFichierController@getNouveauFichier');//->before('guest');
 Route::post('nouveauFichier', 'NouveauFichierController@postNouveauFichier');
@@ -35,6 +34,7 @@ Route::any('lireFichier', function() {return View::make('lireFichier');});
 Route::any('suppFichier', function() {return View::make('suppFichier');});
 Route::get('choixFichier', 'ChoixFichierController@getChoixFichier');//->before('guest');
 Route::post('choixFichier', 'ChoixFichierController@postChoixFichier');//->before('guest');
+Route::any('consultFichier', function() {return View::make('consultFichier');});
 
 Route::get('nouveauDossier', 'NouveauDossierController@getNouveauDossier');//->before('guest');
 Route::post('nouveauDossier', 'NouveauDossierController@postNouveauDossier');

@@ -17,7 +17,7 @@ function lireCSV($fichierCsv){
 
 
 // Set path to CSV file
-$fichierCsv = Input::get('fichier');
+$fichierCsv = Input::get('dossier')."/".Input::get('fichier');
 
 $csv = lireCSV($fichierCsv);
 var_dump($csv);

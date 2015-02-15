@@ -31,14 +31,16 @@ class ChoixFichierController extends BaseController {
 // var_dump(Input::old());
 //			echo("post");
 		//$donnees=Input::all();
-		$donnees['fic'] = Input::get('dossier')."/".Input::get('fichier');
+		//$donnees['fic'] = Input::get('dossier')."/".Input::get('fichier');
 	   switch (Input::get('choix'))
 	   {
 		case "consult":
-			echo("consulter");
+			return View::make('consultFichier');
+//			echo("consulter");
 			break;
 		case "modif":
-			echo("modifier");
+			return View::make('lireFichier');
+//			echo("modifier");
 			break;
 		case "partag":
 			echo("partager");
@@ -48,7 +50,7 @@ class ChoixFichierController extends BaseController {
 			break;
 		case "suppr":
 			//$donnees['fichier'] = Input::get('dossier')."/".Input::get('fichier');
-			return View::make('suppFichier', $donnees);
+			return View::make('suppFichier');//, $donnees);
 			//var_dump($donnees);
 			//echo("supprimer");
 		}
