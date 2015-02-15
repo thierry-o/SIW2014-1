@@ -9,7 +9,8 @@ class ChoixFichierController extends BaseController {
 
 		if (substr(Session::get('dossCourant'), -7)=="Partage")//choix d'un fichier dans le dossier "Partage"
 		{
-			echo "consult";
+			return View::make('consultFichier');
+//			echo "consult";
 			//return Redirect::to('consultFichier', $donnees);
 		}
 		else//hors Partage
