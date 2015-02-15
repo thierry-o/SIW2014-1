@@ -44,7 +44,8 @@ class ChoixFichierController extends BaseController {
 //			echo("modifier");
 			break;
 		case "partag":
-			echo("partager");
+//			echo("partagerFichier");
+			return View::make('partagerFichier');
 			break;
 		case "renomm":
 			echo("renommer");

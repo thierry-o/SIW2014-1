@@ -35,6 +35,7 @@ Route::any('suppFichier', function() {return View::make('suppFichier');});
 Route::get('choixFichier', 'ChoixFichierController@getChoixFichier');//->before('guest');
 Route::post('choixFichier', 'ChoixFichierController@postChoixFichier');//->before('guest');
 Route::any('consultFichier', function() {return View::make('consultFichier');});
+Route::any('ouvrePartage', function() {return View::make('partagerFichier');});
 
 Route::get('nouveauDossier', 'NouveauDossierController@getNouveauDossier');//->before('guest');
 Route::post('nouveauDossier', 'NouveauDossierController@postNouveauDossier');
