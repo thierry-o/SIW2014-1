@@ -35,12 +35,15 @@ border:2px solid #00BFFF;
 ?>
 			<form method="post" action="choixFichier">
 			<p>
-			
-			<input type="radio" name="choix" checked="checked" /> Consulter<br />
-			<input type="radio" name="choix"  /> Modifier<br />
-			<input type="radio" name="choix"  /> Partager<br />
-			<input type="radio" name="choix"  /> Renommer<br />
-			<input type="radio" name="choix"  /> Supprimer<br />
+<?php
+			echo "<input type=\"hidden\" name=\"fichier\" value=\"".Input::get('fichier')."\" />";
+			echo "<input type=\"hidden\" name=\"dossier\" value=\"".Input::get('dossier')."\" />";
+?>
+			<input type="radio" name="choix" value="consult" checked="checked" /> Consulter<br />
+			<input type="radio" name="choix" value="modif"  /> Modifier<br />
+			<input type="radio" name="choix" value="partag"  /> Partager<br />
+			<input type="radio" name="choix" value="renomm"  /> Renommer<br />
+			<input type="radio" name="choix" value="suppr"  /> Supprimer<br />
 			</p>
 			<input type="submit" value="OK" />
 			</form>

@@ -24,8 +24,35 @@ class ChoixFichierController extends BaseController {
     public function postChoixFichier()
 
     {
-			echo("post");
-
+//var_dump(Session::all());
+// echo"***";
+// var_dump(Input::all());
+//echo"***";
+// var_dump(Input::old());
+//			echo("post");
+		//$donnees=Input::all();
+		$donnees['fic'] = Input::get('dossier')."/".Input::get('fichier');
+	   switch (Input::get('choix'))
+	   {
+		case "consult":
+			echo("consulter");
+			break;
+		case "modif":
+			echo("modifier");
+			break;
+		case "partag":
+			echo("partager");
+			break;
+		case "renomm":
+			echo("renommer");
+			break;
+		case "suppr":
+			//$donnees['fichier'] = Input::get('dossier')."/".Input::get('fichier');
+			return View::make('suppFichier', $donnees);
+			//var_dump($donnees);
+			//echo("supprimer");
+		}
+		
     }
 
 }

@@ -6,10 +6,10 @@
 //echo"***";
 // var_dump(Input::old());
 // echo "ok";
-$fichier=Input::get('fichier');
+$fichier=Input::get('dossier')."/".Input::get('fichier');
 //suppression du fichier
 unlink($fichier);
-//echo $donnees;
+//echo $fichier;
 echo "<h3>Le ficher a ete supprime</h3>";
 echo "<form action=\"appli\" method=\"get\">";
 echo '<input type="hidden" name="dir" value="'.Session::get('dossCourant').'" />';

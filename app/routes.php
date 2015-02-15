@@ -34,6 +34,7 @@ Route::post('editeFichier', 'EditeFichierController@postEditeFichier');
 Route::any('lireFichier', function() {return View::make('lireFichier');});
 Route::any('suppFichier', function() {return View::make('suppFichier');});
 Route::get('choixFichier', 'ChoixFichierController@getChoixFichier');//->before('guest');
+Route::post('choixFichier', 'ChoixFichierController@postChoixFichier');//->before('guest');
 
 Route::get('nouveauDossier', 'NouveauDossierController@getNouveauDossier');//->before('guest');
 Route::post('nouveauDossier', 'NouveauDossierController@postNouveauDossier');
