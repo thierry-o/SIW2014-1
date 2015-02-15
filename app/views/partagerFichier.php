@@ -86,7 +86,7 @@ foreach ($listeUtils as $listeUtil)
 		echo $listeUtil->util_pseudo;
 		echo '</td>';
 		echo'<td>';
-		echo '<select name="type" id="type">';
+		echo '<select name="type'.$listeUtil->id.'" id="type">';
 		echo '<option value="0"';
 		if ($typePartage==0)
 		{
@@ -113,7 +113,7 @@ foreach ($listeUtils as $listeUtil)
 
 ?>
 			</table>
-			<input type="submit" value="OK"/>&nbsp;<input type="submit" value="Annuler"/>
+			<input type="submit" name="valid" value="OK"/>&nbsp;<input type="submit" name="annuler" value="Annuler"/>
 		</form>
 		</fieldset>
 	</body>

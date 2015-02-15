@@ -1,11 +1,11 @@
 
 <?php
- var_dump(Session::all());
- echo"***";
- var_dump(Input::all());
-echo"***";
- var_dump(Input::old());
- echo "ok";
+// var_dump(Session::all());
+// echo"***";
+// var_dump(Input::all());
+//echo"***";
+// var_dump(Input::old());
+// echo "ok";
 $fichierCsv=Input::get('fichierCsv');
 $nbrLigne=Input::get('nbrLigne');
 $nbrChamp=Input::get('nbrChamp');

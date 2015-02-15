@@ -45,7 +45,7 @@ border:2px solid #00BFFF;
 			<input type="radio" name="choix" value="renomm"  /> Renommer<br />
 			<input type="radio" name="choix" value="suppr"  /> Supprimer<br />
 			</p>
-			<input type="submit" value="OK" />
+			<input type="submit" name="valid" value="OK" />
 			</form>
 		</fieldset>
 	</body>

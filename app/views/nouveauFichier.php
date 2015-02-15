@@ -32,11 +32,11 @@ border:2px solid #00BFFF;
 <fieldset><br>
 	<legend><h3><FONT COLOR="#0000FF">Nouveau Fichier</FONT></h3></legend>
 <?php
-var_dump(Session::all());
- echo"***";
- var_dump(Input::all());
-echo"***";
- var_dump(Input::old());
+//var_dump(Session::all());
+// echo"***";
+// var_dump(Input::all());
+//echo"***";
+// var_dump(Input::old());
 if (substr(Session::get('dossCourant'), -7)=="Partage")//tentative de creer un fichier dans le dossier "Partage"
 {
 	echo '<div>Création du fichier impossible dans le dossier "Partage"</div>';

@@ -1,10 +1,10 @@
 
 <?php
- var_dump(Session::all());
- echo"***";
- var_dump(Input::all());
-echo"***";
- var_dump(Input::old());
+// var_dump(Session::all());
+// echo"***";
+// var_dump(Input::all());
+//echo"***";
+// var_dump(Input::old());
 
 function lireCSV($fichierCsv){
 	$fic = fopen($fichierCsv, 'r');
@@ -20,7 +20,7 @@ function lireCSV($fichierCsv){
 $fichierCsv = Input::get('dossier')."/".Input::get('fichier');
 
 $csv = lireCSV($fichierCsv);
-var_dump($csv);
+//var_dump($csv);
 $nbrLigne= count($csv);
 $nbrChamp=count($csv[1]);
 
