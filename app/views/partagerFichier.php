@@ -115,6 +115,10 @@ foreach ($listeUtils as $listeUtil)
 			</table>
 			<input type="submit" name="valid" value="OK"/>&nbsp;<input type="submit" name="annuler" value="Annuler"/>
 		</form>
+			<form action="appli" method="get">
+				<input type="hidden" name="dir" value="<?php echo Session::get('dossCourant'); ?>" />
+				<input type="submit" value="Annuler" name="Annuler" />
+			</form>
 		</fieldset>
 	</body>
 </html>

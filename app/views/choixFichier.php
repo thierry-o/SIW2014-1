@@ -47,6 +47,10 @@ border:2px solid #00BFFF;
 			</p>
 			<input type="submit" name="valid" value="OK" />
 			</form>
+			<form action="appli" method="get">
+				<input type="hidden" name="dir" value="<?php echo Session::get('dossCourant'); ?>" />
+				<input type="submit" value="Annuler" name="Annuler" />
+			</form>
 		</fieldset>
 	</body>
 </html>
