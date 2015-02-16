@@ -19,7 +19,7 @@ class MajPartageController extends BaseController {
 //echo"***";
 // var_dump(Input::old());
 //			echo("post");
-		
+		return View::make('majPartage');
     }
 
 }

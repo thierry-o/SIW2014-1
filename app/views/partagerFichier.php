@@ -38,10 +38,10 @@ border:2px solid #00BFFF;
 				
 
 <?php
-// var_dump(Session::all());
-// echo"***";
-// var_dump(Input::all());
-//echo"***";
+ var_dump(Session::all());
+ echo"***";
+ var_dump(Input::all());
+echo"***";
 // var_dump(Input::old());
  
 //récupération de l'id du fichier
@@ -113,7 +113,10 @@ foreach ($listeUtils as $listeUtil)
 
 ?>
 			</table>
-			<input type="submit" name="valid" value="OK"/>&nbsp;<input type="submit" name="annuler" value="Annuler"/>
+			<input type="hidden" name="fichier" value="<?php echo(Input::get('fichier')); ?>" />
+			<input type="hidden" name="dossier" value="<?php echo(Input::get('dossier')); ?>" />
+			<input type="hidden" name="idFichier" value="<?php echo($numIdFich); ?>" />
+			<input type="submit" name="valid" value="OK"/><!--&nbsp;<input type="submit" name="annuler" value="Annuler"/>-->
 		</form>
 			<form action="appli" method="get">
 				<input type="hidden" name="dir" value="<?php echo Session::get('dossCourant'); ?>" />
