@@ -37,41 +37,75 @@ border:2px solid #00BFFF;
 echo"***";
 // var_dump(Input::old());
 // echo "ok";
-//suppression de tous les partages du fichier
+
 $numIdFich=intval(Input::get('idFichier'));
-DB::table('partage')->where('part_fich_id', $numIdFich)->delete();
+
 //nombre d'utilisateurs
 $nombreUtils = DB::table('utilisateur')->count();
 //liste des id et des noms des utilisateurs
-$liste=DB::table('utilisateur')->select('id', 'util_pseudo')->get();
+$listeUtils=DB::table('utilisateur')->select('id', 'util_pseudo')->get();
+//liste des partages du fichier
+//$partages=DB::table('partage')->select('part_util_id', 'part_type')->where('part_fich_id', $numIdFich)->get();
 echo ($nombreUtils);
-//vérification pour chaque utilisateur s'il y a un partage
-for ($i=1; $i<=$nombreUtils; $i++)
+//var_dump ($partages);
+// echo"***";
+var_dump($listeUtils);
+ echo"***";
+//pour chaque utilisateur
+foreach ($listeUtils as $listeUtil)
 {
-	if (Input::has('type'.$i))//si l'utilisateur est listé
+	
+	
+	$numIdUtil=$listeUtil->id;
+	//vérification si un partage existe en faveur de l'utilisateur
+	$partage=DB::table('partage')->select('part_util_id', 'part_type', 'part_chemin')->where('part_fich_id', $numIdFich)->where('part_util_id', $numIdUtil)->first();
+	//var_dump($partage);
+	// echo"***";
+	//attribution du type de partage existant dans la base
+	(!isset($partage)) ? $typeBase=0:$typeBase=$partage->part_type;
+	echo "type base ".$typeBase." ";
+	
+	//comparaison du type de partage dans la base et dans Input
+	Input::has('type'.$numIdUtil) ? $typeActuel=Input::get('type'.$numIdUtil) : $typeActuel=0;
+		echo "type actuel".$typeActuel." ";
+	if ($typeBase != $typeActuel)//si les droits ont été modifiés, on les actualise
 	{
-		$utilisateur=DB::table('utilisateur')->select('util_pseudo')->where('id', $i)->first();
-		//récupération du dossier partagé
-		$pos = strpos(Input::get('dossier'), 'documents');
-		$chemin=substr(Input::get('dossier'), 0, $pos+9)."/".$utilisateur->util_pseudo."/Partage/".Input::get('fichier');
-//		echo ($chemin);
-//		echo(Input::get('dossier')."/".Input::get('fichier'));
-		if  (Input::get('type'.$i)!="0")//lecture ou lecture/ecriture
+		if($typeActuel=="0")//le partage a été supprimé
 		{
-			echo ('$i '.$i." ".Input::get('type'.$i));
-			//insertion du partage dans la table
-			DB::table('partage')->insert(
-				array('part_util_id' => $i, 'part_fich_id' => $numIdFich, 'part_type' => Input::get('type'.$i), 'part_chemin' => Input::get('dossier'))
-				);
-			//copie du fichier
-			copy(Input::get('dossier')."/".Input::get('fichier'), $chemin);
+			//suppression du partage dans la table
+			DB::table('partage')->where('part_fich_id', $numIdFich)->where('part_util_id', $numIdUtil)->delete();
+			//suppression de la copie du fichier
+			$chemin=$partage->part_chemin."/".Input::get('fichier');
+			if (file_exists($chemin))
+			{
+				unlink($chemin);
+			}
 		}
-		else//pas partagé
+		if($typeActuel!="0")//le partage a été modifié
 		{
+			//récupération du chemin du dossier partagé
+			$pos = strpos(Input::get('dossier'), 'documents');
+			$chemin=substr(Input::get('dossier'), 0, $pos+9)."/".$listeUtil->util_pseudo."/Partage";
+			
+			//suppression du partage dans la table
+			DB::table('partage')->where('part_fich_id', $numIdFich)->where('part_util_id', $numIdUtil)->delete();
+			//création du partage dans la table
+			DB::table('partage')->insert(array('part_util_id' => $numIdUtil, 'part_fich_id' => $numIdFich, 'part_type' => intval($typeActuel), 'part_chemin' => $chemin));
+			//création du fichier si nécessaire
+			$fichier=Input::get('dossier')."/".Input::get('fichier');
+			$copie=$chemin."/".Input::get('fichier');
+			if (!file_exists($copie))
+			{
+				copy($fichier, $copie);
+			}
+			
+			
+			
 		}
 	}
-	//echo($donnee->name);
+
 }
+
 ?>
 		</fieldset>
 	</body>
