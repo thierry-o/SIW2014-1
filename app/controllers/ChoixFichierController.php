@@ -9,7 +9,32 @@ class ChoixFichierController extends BaseController {
 
 		if (substr(Session::get('dossCourant'), -7)=="Partage")//choix d'un fichier dans le dossier "Partage"
 		{
-			return View::make('consultFichier');
+//var_dump(Session::all());
+// echo"***";
+// var_dump(Input::all());
+// echo"***";
+			//récupération de l'id du fichier
+			$fichier=Input::get('dossier')."/".Input::get('fichier');
+			$fic=fopen($fichier, 'r');
+			$ligne=fgets($fic);
+			fclose($fic);
+			$id=intval($ligne);
+			//vérification du type de partage
+			$req=DB::table('partage')->where('part_fich_id', $id)->where('part_util_id', Auth::id())->first();
+			$type=$req->part_type;
+			//redirection vers la page correcte
+			switch ($type)
+			{
+				case 1:
+					return View::make('consultFichier');
+//					echo("consulter");
+					break;
+				case 3:
+					return View::make('lireFichier');
+//					echo("modifier");
+					break;
+			}
+//			return View::make('consultFichier');
 //			echo "consult";
 			//return Redirect::to('consultFichier', $donnees);
 		}
