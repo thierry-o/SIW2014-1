@@ -31,7 +31,7 @@ for ($j=0;$j<$nbrLigne;$j++)
 }
 $donnees=substr($donnees, 0, -1);
 //ouverture du fichier
-echo $fichierCsv;
+//echo $fichierCsv;
 $fic = fopen($fichierCsv,"w+");
 fputs($fic, $donnees);
 fclose($fic);
