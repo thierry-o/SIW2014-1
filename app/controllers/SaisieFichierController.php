@@ -29,7 +29,7 @@ return View::make('saisieFichier', $donnees);
 //           return Redirect::to('saisieFichier')->withInput();
 //var_dump(Session::all());
 // echo"***";
-// var_dump(Input::all());
+//var_dump(Input::all());
 //echo"***";
 // var_dump(Input::old());
 
