@@ -1,9 +1,9 @@
 
 <?php
-// var_dump(Session::all());
-// echo"***";
-// var_dump(Input::all());
-//echo"***";
+ var_dump(Session::all());
+ echo"***";
+ var_dump(Input::all());
+echo"***";
 // var_dump(Input::old());
 
 function lireCSV($fichierCsv){
@@ -29,7 +29,7 @@ $idFichier=$csv[0][0];
 echo '<form action="appli" method="get">';
 echo "<input type=\"hidden\" name=\"dir\" value=\"".Session::get('dossCourant')."\" />";
 
-//création du masque de saisie		
+//création du tableau		
 echo "<table border=\"1\"><tr>";
 
 //en-tete
@@ -54,3 +54,9 @@ for ($j=3;$j<$nbrLigne;$j++)
 echo "</table>";
 echo '<input type="submit" name="finConsult" value="Fermer" />';
 echo '</form>';
+echo '<form action="creePdf" method="post">';
+echo "<input type=\"hidden\" name=\"fichier\" value=\"".Input::get('fichier')."\" />";
+echo "<input type=\"hidden\" name=\"dossier\" value=\"".Input::get('dossier')."\" />";
+echo '<input type="submit" name="pdf" value="Export en PDF" />';
+echo '</form>';
+

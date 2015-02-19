@@ -63,3 +63,9 @@ echo "<input type=\"hidden\" value=\"".$nbrLigne."\" name=\"nbrLigne\" />";
 echo "<input type=\"hidden\" value=\"".$nbrChamp."\" name=\"nbrChamp\" />";
 echo '<input type="submit" name="finsaisie" value="Enregistrer" />';
 echo '</form>';
+echo '<form action="creePdf" method="post">';
+echo "<input type=\"hidden\" name=\"fichier\" value=\"".Input::get('fichier')."\" />";
+echo "<input type=\"hidden\" name=\"dossier\" value=\"".Input::get('dossier')."\" />";
+echo '<input type="submit" name="pdf" value="Export en PDF" />';
+echo '</form>';
+

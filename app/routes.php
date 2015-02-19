@@ -37,11 +37,13 @@ Route::post('choixFichier', 'ChoixFichierController@postChoixFichier');//->befor
 Route::any('consultFichier', function() {return View::make('consultFichier');});
 Route::any('ouvrePartage', function() {return View::make('partagerFichier');});
 Route::post('majPartage', 'MajPartageController@postMajPartage');
-
+Route::any('creePdf', 'CreePdfController@postCreePdf');
 Route::get('nouveauDossier', 'NouveauDossierController@getNouveauDossier');//->before('guest');
 Route::post('nouveauDossier', 'NouveauDossierController@postNouveauDossier');
 Route::get('explorateur', function() {return View::make('explorateur');});
 Route::get('saisieFichier', 'SaisieFichierController@getSaisieFichier');
 Route::post('saisieFichier', 'SaisieFichierController@postSaisieFichier');
+Route::any('ouvrePdf', function() {return Response::download('F:\LICENCE_INFO\logiciels\xampp\htdocs\SIW2014-1\app\test1.pdf');});
 App::missing(function()
 {  return 'Page inexistante !'; });
+Route::any('vue1', function() {return View::make('vue1');});
