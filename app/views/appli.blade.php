@@ -1,10 +1,7 @@
-<html>
-	<head>
-	 
-		<script type="text/javascript" src="js/fonctions.js"></script>
-		<link rel="stylesheet" type="text/css" href="css/style.css">
-	</head>
-<body>
+@extends('modele_base')
+
+
+@section('contenu')
 
 <?php
 // var_dump(Session::all());
@@ -93,7 +90,7 @@ function list_file($cur) {
 }
 ?>
 
-<table border="1" cellspacing="0" cellpadding="10" bordercolor="gray">
+<table id="table_appli">
 <tr valign="top"><td>
 
 <!-- liste des répertoires
@@ -136,7 +133,5 @@ list_file(rawurldecode($dir));
 		</form>
 <!-- <input type="button" value="Nouveau fichier", name="bouton1" id="bouton1" onClick="BoutonNouvFich()"/>
 <input type="button" value="Nouveau dossier", name="bouton2" id="bouton2" onClick="BoutonNouvDoss()"/> -->
-<input type="button" value="Deconnexion", name="bouton3" id="bouton3" onClick="BoutonDeconnecter()"/>
-</body>
-</html>
 
+@stop
