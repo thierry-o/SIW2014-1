@@ -60,7 +60,7 @@ for ($j=3;$j<$nbrLigne;$j++)
 {
 	for ($i=0;$i<$nbrChamp;$i++)
 	 {
-	 echo "<td><input type=\"".$type[$i]."\" value=\"".$csv[$j][$i]."\" name=\"champ".($j-1).$i."\" required/></td>";
+	 echo "<td><input type=\"".$type[$i]."\" value=\"".$csv[$j][$i]."\" name=\"champ".($j-1).$i."\" /></td>";
 	 
 	}
 	echo "</tr>";

@@ -66,7 +66,7 @@ for ($j=2;$j<$ligne;$j++)
 	for ($i=0;$i<$nombre;$i++)
 	 {
 	 
-	 echo "<td><input type=\"".$type[$i]."\" name=\"champ".$j.$i."\" required/></td>";
+	 echo "<td><input type=\"".$type[$i]."\" name=\"champ".$j.$i."\" /></td>";
 	 
 	}
 	echo "</tr>";
