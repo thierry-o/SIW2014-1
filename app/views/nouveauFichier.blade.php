@@ -8,6 +8,7 @@
 if (substr(Session::get('dossCourant'), -7)=="Partage")//tentative de creer un fichier dans le dossier "Partage"
 {
 	echo '<div>Création du fichier impossible dans le dossier "Partage"</div>';
+	//formulaire-bouton de retour accueil
 	echo "<form action=\"appli\" method=\"get\">";
 	echo '<input type="hidden" name="dir" value="'.Session::get('dossCourant').'" />';
 	echo '<input type="submit" value="OK"/>';
@@ -15,8 +16,6 @@ if (substr(Session::get('dossCourant'), -7)=="Partage")//tentative de creer un f
 }
 else //on n'est pas dans Partage, donc on peut créer
 {
-
-
 	if ((!Input::has('validnouv')) | ($errors->has('nom')))//s'il y a des erreurs ou si c'est la première entrée, on affiche le formulaire
 	{
 	?>	
@@ -30,7 +29,7 @@ else //on n'est pas dans Partage, donc on peut créer
 	<?php
 		if ($errors->has('nom'))//erreur sur le nom
 		{
-			echo $errors->first('nom');
+			echo $errors->first('nom');//affichage erreurs
 			echo "<br />";
 		}
 	?>
@@ -43,8 +42,9 @@ else //on n'est pas dans Partage, donc on peut créer
 			</form>
 	<?php
 	}
-	else//sinon (pas d'erreur)
+	else//sinon (pas d'erreur) on saisit les donnees
 	{
+		//initialisation variables
 		$fich=Session::get('dossCourant')."/".Input::get('nom');
 		$nombre=Input::get('champs');
 		$ligne=Input::get('lignes')+2;

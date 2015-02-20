@@ -1,13 +1,7 @@
 
 <?php
-// var_dump(Session::all());
-// echo"***";
-// var_dump(Input::all());
-//echo"***";
-// var_dump(Input::old());
-// echo "ok";
+//initialisation du chemin
 $fichier=Input::get('dossier')."/".Input::get('fichier');
-//echo $fichier;
 if (substr(Session::get('dossCourant'), -7)=="Partage")//tentative de supprimer un fichier dans le dossier "Partage"
 {
 	echo '<div>Suppression du fichier impossible dans le dossier "Partage"</div>';
@@ -33,18 +27,17 @@ else //on n'est pas dans Partage, donc on peut supprimer
 	{
 		if ($chemin->part_chemin===NULL)//chemin vide
 		{
-			echo 'pas ok';
+			echo 'non trouve';
 		}
 		else //partage trouve dans la table
 		{
-			echo('ok');
-			echo($chemin->part_chemin."/".Input::get('fichier'));
+			echo('trouve');
+			//initialisation de chemin
 			$fichier=$chemin->part_chemin."/".Input::get('fichier');
+			//suppression
 			unlink($fichier);
 		}
 	}
-	//DB::delete('delete from partage')->where('fich_id', '==', '5');//$id->fich_id);
-	//DB::delete('delete from fichier')->where('fich_id', '5');// $id->fich_id);
 	echo "<h3>Le ficher a ete supprime</h3>";
 	echo "<form action=\"appli\" method=\"get\">";
 	echo '<input type="hidden" name="dir" value="'.Session::get('dossCourant').'" />';

@@ -1,12 +1,6 @@
 
 <?php
-// var_dump(Session::all());
-// echo"***";
- var_dump(Input::all());
-echo"***";
-// var_dump(Input::old());
-// echo "partage".$partage;
-
+//fonction de conversion de csv en tableau
 function lireCSV($fichierCsv){
 	$fic = fopen($fichierCsv, 'r');
 	while (!feof($fic) ) {
@@ -17,7 +11,7 @@ function lireCSV($fichierCsv){
 }
 
 
-// Set path to CSV file
+//initialisatin du chemin vers le fichier
 if (isset($partage))//verification si ouverture d'un fichier partage
 {
 	$fichierCsv =  $partage."/".Input::get('fichier');
@@ -26,15 +20,16 @@ else
 {
 	$fichierCsv =  Input::get('dossier')."/".Input::get('fichier');
 }
-
+//lecture du fichier
 $csv = lireCSV($fichierCsv);
-//var_dump($csv);
+//initialisation des variables
 $nbrLigne= count($csv);
 $nbrChamp=count($csv[1]);
-
 $idFichier=$csv[0][0];
- echo "<h3>Saisie des donnees</h3>";
+//affichage du formulaire
+echo "<h3>Saisie des donnees</h3>";
 echo '<form action="editeFichier" method="post">';
+//envoi masqué des variables
 echo "<input type=\"hidden\" value=\"".$fichierCsv."\" name=\"fichierCsv\" />";
 echo "<input type=\"hidden\" value=\"".$idFichier."\" name=\"idFichier\" />";
 //création du masque de saisie		
@@ -59,21 +54,22 @@ echo "</tr>";
 for ($j=3;$j<$nbrLigne;$j++)
 {
 	for ($i=0;$i<$nbrChamp;$i++)
-	 {
-	 echo "<td><input type=\"".$type[$i]."\" value=\"".$csv[$j][$i]."\" name=\"champ".($j-1).$i."\" /></td>";
-	 
+	{
+	 echo "<td><input type=\"".$type[$i]."\" value=\"".$csv[$j][$i]."\" name=\"champ".($j-1).$i."\" /></td>";	 
 	}
 	echo "</tr>";
 }
 
 echo "</table>";
+//variables envoyees
 echo "<input type=\"hidden\" value=\"".$nbrLigne."\" name=\"nbrLigne\" />";
 echo "<input type=\"hidden\" value=\"".$nbrChamp."\" name=\"nbrChamp\" />";
 echo '<input type="submit" name="finsaisie" value="Enregistrer" />';
 echo '</form>';
+//formulaire-bouton pour l'export PDF
 echo '<form action="creePdf" method="post">';
 echo "<input type=\"hidden\" name=\"fichier\" value=\"".Input::get('fichier')."\" />";
 echo "<input type=\"hidden\" name=\"dossier\" value=\"".Input::get('dossier')."\" />";
 echo '<input type="submit" name="pdf" value="Export en PDF" />';
 echo '</form>';
-
+?>

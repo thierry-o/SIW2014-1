@@ -31,61 +31,42 @@ border:2px solid #00BFFF;
 	<body>
 		<fieldset>
 <?php
-			echo "<legend><h3>Partages du fichier : \"".Input::get('fichier')."\"</h3></legend>";
+	echo "<legend><h3>Partages du fichier : \"".Input::get('fichier')."\"</h3></legend>";
 ?>
 		<form action="majPartage" method="post">
 			<table border="1" bordercolor="gray">
 				
 
 <?php
- var_dump(Session::all());
- echo"***";
- var_dump(Input::all());
-echo"***";
-// var_dump(Input::old());
  
 //récupération de l'id du fichier
 $idFich = DB::table('fichier')->select('fich_id')->where('fich_nom', Input::get('fichier'))->where('fich_chemin', Input::get('dossier'))->first();
 $numIdFich=intval($idFich->fich_id);
+//id de l'utilisateur
+$numIdUtil=intval(Auth::id());
 //lister les utilisateurs sauf l'utilisateur courant
-$numIdUtil=intval(Auth::id());//id de l'utilisateur
 $listeUtils = DB::table('utilisateur')->select('id', 'util_pseudo')->where('id', '<>', $numIdUtil)->get();
 //pour chaque utilisateur on affiche l'état du partage
 foreach ($listeUtils as $listeUtil)
 {
 		echo "<tr>";
-		//echo('ok');
-		//echo($listeUtil->id." ".$listeUtil->util_pseudo);
 		$numIdUtilListe=intval($listeUtil->id);//id de l'utilisateur
 		//récupération du type de partage si le fichier est partagé avec l'utilisateur
 		$listePartages = DB::table('partage')->select('part_type')->where('part_util_id', $numIdUtilListe)->where('part_fich_id', $numIdFich)->first();
-		if (isset ($listePartages->part_type))//($listePartages->part_type===NULL) | ($listePartages->part_type===0))//non partage
+		if (isset ($listePartages->part_type))
 		{
-//			echo('ok');
-//			echo($listePartages->part_type);
 			$typePartage=$listePartages->part_type;
 		}
-		else //partage trouve dans la table
+		else //partage pas trouve dans la table
 		{
-//			echo 'pas partagé';
 			$typePartage=0;
 		}
-	   switch ($typePartage)
-	   {
-		case 0:
-//			echo 'pas partagé ';
-			break;
-		case 1:
-//			echo 'lecture ';
-			break;
-		case 3:
-//			echo 'ecriture ';
-			break;
-		}
 		echo'<td>';
+		//affichage du nom d'utilisateur
 		echo $listeUtil->util_pseudo;
 		echo '</td>';
 		echo'<td>';
+		//construction de la liste avec selection du choix actuel
 		echo '<select name="type'.$listeUtil->id.'" id="type">';
 		echo '<option value="0"';
 		if ($typePartage==0)
@@ -116,7 +97,7 @@ foreach ($listeUtils as $listeUtil)
 			<input type="hidden" name="fichier" value="<?php echo(Input::get('fichier')); ?>" />
 			<input type="hidden" name="dossier" value="<?php echo(Input::get('dossier')); ?>" />
 			<input type="hidden" name="idFichier" value="<?php echo($numIdFich); ?>" />
-			<input type="submit" name="valid" value="OK"/><!--&nbsp;<input type="submit" name="annuler" value="Annuler"/>-->
+			<input type="submit" name="valid" value="OK"/>
 		</form>
 			<form action="appli" method="get">
 				<input type="hidden" name="dir" value="<?php echo Session::get('dossCourant'); ?>" />

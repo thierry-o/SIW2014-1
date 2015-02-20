@@ -9,80 +9,52 @@ class ChoixFichierController extends BaseController {
 
 		if (substr(Session::get('dossCourant'), -7)=="Partage")//choix d'un fichier dans le dossier "Partage"
 		{
-//var_dump(Session::all());
-// echo"***";
-// var_dump(Input::all());
-// echo"***";
-			//récupération de l'id du fichier
+			//initialiosation du chemin
 			$fichier=Input::get('dossier')."/".Input::get('fichier');
+			//ouverture du fichier et lecture de la premiere ligne (contenant l'id)
 			$fic=fopen($fichier, 'r');
 			$ligne=fgets($fic);
 			fclose($fic);
+			//récupération de l'id du fichier
 			$id=intval($ligne);
 			//vérification du type de partage
 			$req=DB::table('partage')->where('part_fich_id', $id)->where('part_util_id', Auth::id())->first();
 			$type=$req->part_type;
+			//recuperation du chemin vers le fichier
 			$req=DB::table('fichier')->where('fich_id', $id)->first();
 			$dossier=$req->fich_chemin;
-//			echo $dossier;
 			//redirection vers la page correcte
 			switch ($type)
 			{
-				case 1:
-					return View::make('consultFichier', array('partage' => $dossier));
-//					echo("consulter");
+				case 1://si partage lecture =>consultation
+					return View::make('consultFichier', array('partage' => $dossier));//ajout du chemin vers le fichier d'origine
 					break;
-				case 3:
-					return View::make('lireFichier', array('partage' => $dossier));
-//					echo("modifier");
+				case 3://si partage lect-ecriture => modification
+					return View::make('lireFichier', array('partage' => $dossier));//ajout du chemin vers le fichier d'origine
 					break;
 			}
-//			return View::make('consultFichier');
-//			echo "consult";
-			//return Redirect::to('consultFichier', $donnees);
 		}
 		else//hors Partage
 		{
-			//echo ("get");
-			
 			return View::make('choixFichier', $donnees);
 		}
-
     }
 
     public function postChoixFichier()
-
     {
-//var_dump(Session::all());
-// echo"***";
-// var_dump(Input::all());
-//echo"***";
-// var_dump(Input::old());
-//			echo("post");
-		//$donnees=Input::all();
-		//$donnees['fic'] = Input::get('dossier')."/".Input::get('fichier');
 	   switch (Input::get('choix'))
 	   {
 		case "consult":
 			return View::make('consultFichier');
-//			echo("consulter");
 			break;
 		case "modif":
 			return View::make('lireFichier');
-//			echo("modifier");
 			break;
 		case "partag":
-//			echo("partagerFichier");
 			return View::make('partagerFichier');
 			break;
-		case "renomm":
-			echo("renommer");
-			break;
 		case "suppr":
-			//$donnees['fichier'] = Input::get('dossier')."/".Input::get('fichier');
-			return View::make('suppFichier');//, $donnees);
-			//var_dump($donnees);
-			//echo("supprimer");
+			return View::make('suppFichier');
 		}
 		
     }

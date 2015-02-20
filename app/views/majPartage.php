@@ -31,43 +31,26 @@ border:2px solid #00BFFF;
 	<body>
 		<fieldset>
 <?php
- var_dump(Session::all());
- echo"***";
- var_dump(Input::all());
-echo"***";
-// var_dump(Input::old());
-// echo "ok";
-
+//initialisatin des variables
+//id du fichier
 $numIdFich=intval(Input::get('idFichier'));
-
 //nombre d'utilisateurs
 $nombreUtils = DB::table('utilisateur')->count();
 //liste des id et des noms des utilisateurs
 $listeUtils=DB::table('utilisateur')->select('id', 'util_pseudo')->get();
-//liste des partages du fichier
-//$partages=DB::table('partage')->select('part_util_id', 'part_type')->where('part_fich_id', $numIdFich)->get();
-echo ($nombreUtils);
-//var_dump ($partages);
-// echo"***";
-var_dump($listeUtils);
- echo"***";
+
 //pour chaque utilisateur
 foreach ($listeUtils as $listeUtil)
 {
-	$numIdUtil=$listeUtil->id;
+	$numIdUtil=$listeUtil->id;///id de l'utilisateur
 	if ($numIdUtil != Auth::id())//on ne vérifie pas pour l'utilisateur qui partage
 	{
 		//vérification si un partage existe en faveur de l'utilisateur
 		$partage=DB::table('partage')->select('part_util_id', 'part_type', 'part_chemin')->where('part_fich_id', $numIdFich)->where('part_util_id', $numIdUtil)->first();
-		//var_dump($partage);
-		// echo"***";
 		//attribution du type de partage existant dans la base
 		(!isset($partage)) ? $typeBase=0:$typeBase=$partage->part_type;
-		echo "type base ".$typeBase." ";
-		
 		//comparaison du type de partage dans la base et dans Input
 		Input::has('type'.$numIdUtil) ? $typeActuel=Input::get('type'.$numIdUtil) : $typeActuel=0;
-			echo "type actuel".$typeActuel." ";
 		if ($typeBase != $typeActuel)//si les droits ont été modifiés, on les actualise
 		{
 			if($typeActuel=="0")//le partage a été supprimé

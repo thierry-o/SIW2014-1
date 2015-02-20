@@ -1,7 +1,7 @@
 <?php
-
-	require('F:\LICENCE_INFO\logiciels\xampp\htdocs\SIW2014-1\app\Classes\fpdf17\fpdf.php');
-
+//chargement de la bibliotheque de conversion
+require('F:\LICENCE_INFO\logiciels\xampp\htdocs\SIW2014-1\app\Classes\fpdf17\fpdf.php');
+//definition des fonctions
 class PDF extends FPDF
 {
 	// En-tête
@@ -47,10 +47,11 @@ class PDF extends FPDF
 		$this->SetDrawColor(128,128,128);
 		$this->SetLineWidth(.3);
 		$this->SetFont('','B');
-		// En-tête
+		//calcul de la largeur des colonnes
 		$nbCol=count($header);
 		$largeurTableau=190;
-		$w =(int) $largeurTableau/$nbCol;;
+		$w =(int) $largeurTableau/$nbCol;
+		// En-tête
 		for($i=0;$i<$nbCol;$i++)
 			$this->Cell($w,7,$header[$i],1,0,'C',true);
 		$this->Ln();
@@ -68,9 +69,6 @@ class PDF extends FPDF
 				for ($i=0; $i<$nbCol;$i++)
 				{
 					$this->Cell($w,6,$row[$i],'LR',0,'L',$fill);
-		//			$this->Cell($w[1],6,$row[1],'LR',0,'L',$fill);
-		//			$this->Cell($w[2],6,number_format($row[2],0,',',' '),'LR',0,'R',$fill);
-		//			$this->Cell($w[3],6,number_format($row[3],0,',',' '),'LR',0,'R',$fill);
 				}
 				$this->Ln();
 				$fill = !$fill;
@@ -81,51 +79,33 @@ class PDF extends FPDF
 		$this->Cell($largeurTableau,0,'','T');
 	}
 }
+
 class CreePdfController extends BaseController {
 
-
-
     public function postCreePdf()
-
     {
-//var_dump(Session::all());
-// echo"***";
-// var_dump(Input::all());
-//echo"***";
-// var_dump(Input::old());
-//			echo("post");
-//		$donnees=Input::all();
-		//$donnees['fic'] = Input::get('dossier')."/".Input::get('fichier');
-			//$donnees['fichier'] = Input::get('dossier')."/".Input::get('fichier');
-//			return View::make('creePdf', $donnees);//, $donnees);
-			//var_dump($donnees);
-			//echo("supprimer");
-
-$fichier=Input::get('dossier')."/".Input::get('fichier');
-//echo $fichier;
-$pdf = new PDF();
-$pdf->AliasNbPages();
-// Chargement des données
-$data = $pdf->LoadData($fichier);
-// Titres des colonnes
-$header = $data[1];
-$pdf->SetFont('Arial','',14);
-$pdf->AddPage();
-$pdf->FancyTable($header,$data);
-//$pdf->Output();
-$chemin="F:/LICENCE_INFO/logiciels/xampp/htdocs/SIW2014-1/app/".Input::get('fichier').".pdf";
-$pdf->Output($chemin);
-    // read the file into a string
-//    $content = $pdf->Output('', 'S'); // outputs the content of the pdf to a string instead of a file
-    // create a Laravel Response using the content string, an http response code of 200(OK),
-    //  and an array of html headers including the pdf content type
-//    return Response::make($content, 200, array('content-type'=>'application/pdf'));
-return Response::download($chemin);
-unlink($chemin);
-			
-		
+		//initialisation du chemin
+		$fichier=Input::get('dossier')."/".Input::get('fichier');
+		//creation du fichier
+		$pdf = new PDF();
+		//pagination
+		$pdf->AliasNbPages();
+		// Chargement des données
+		$data = $pdf->LoadData($fichier);
+		// Titres des colonnes
+		$header = $data[1];
+		$pdf->SetFont('Arial','',14);
+		$pdf->AddPage();
+		$pdf->FancyTable($header,$data);
+		//chemin de création du fichier provisoire
+		$chemin="F:/LICENCE_INFO/logiciels/xampp/htdocs/SIW2014-1/app/".Input::get('fichier').".pdf";
+		//creation du fichier provisoire
+		$pdf->Output($chemin);
+		//téléchargement du fichier
+		return Response::download($chemin);
+		//effacement du fichier provisoire
+		unlink($chemin);
     }
-
 }
 
 

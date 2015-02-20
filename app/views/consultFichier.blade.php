@@ -1,10 +1,9 @@
+@extends('modele_base')
+
+
+@section('contenu')
 
 <?php
- var_dump(Session::all());
- echo"***";
- var_dump(Input::all());
-echo"***";
-// var_dump(Input::old());
 
 function lireCSV($fichierCsv){
 	$fic = fopen($fichierCsv, 'r');
@@ -16,7 +15,7 @@ function lireCSV($fichierCsv){
 }
 
 
-// Set path to CSV file
+// creation du chemin vers le fichier csv
 if (isset($partage))//verification si ouverture d'un fichier partage
 {
 	$fichierCsv =  $partage."/".Input::get('fichier');
@@ -25,14 +24,14 @@ else
 {
 	$fichierCsv =  Input::get('dossier')."/".Input::get('fichier');
 }
-
+//lecture du fichier
 $csv = lireCSV($fichierCsv);
-//var_dump($csv);
+//initialisation des variables
 $nbrLigne= count($csv);
 $nbrChamp=count($csv[1]);
-
 $idFichier=$csv[0][0];
- echo "<h3>Consultation des donnees du fichier : ".Input::get('fichier')."</h3>";
+
+echo "<h3>Consultation des donnees du fichier : ".Input::get('fichier')."</h3>";
 echo '<form action="appli" method="get">';
 echo "<input type=\"hidden\" name=\"dir\" value=\"".Session::get('dossCourant')."\" />";
 
@@ -43,17 +42,15 @@ echo "<table border=\"1\"><tr>";
 for ($i=0;$i<$nbrChamp;$i++)
 {
 	echo "<td>".$csv[1][$i]."</td>";
-	
 }
 echo "</tr>";
 
 //corps
-for ($j=3;$j<$nbrLigne;$j++)
+for ($j=3;$j<$nbrLigne;$j++)//creation des lignes
 {
-	for ($i=0;$i<$nbrChamp;$i++)
+	for ($i=0;$i<$nbrChamp;$i++)//insertion des donnees
 	 {
 	 echo "<td>".$csv[$j][$i]."</td>";
-	 
 	}
 	echo "</tr>";
 }
@@ -62,8 +59,10 @@ echo "</table>";
 echo '<input type="submit" name="finConsult" value="Fermer" />';
 echo '</form>';
 echo '<form action="creePdf" method="post">';
+//passage des variables
 echo "<input type=\"hidden\" name=\"fichier\" value=\"".Input::get('fichier')."\" />";
 echo "<input type=\"hidden\" name=\"dossier\" value=\"".Input::get('dossier')."\" />";
 echo '<input type="submit" name="pdf" value="Export en PDF" />';
 echo '</form>';
-
+?>
+@stop

@@ -1,8 +1,7 @@
 
 <?php
- function test($modele, $sujet) 
+function test($modele, $sujet) 
 {
-	       
 		if(preg_match($modele, $sujet)) 
 		{
             return true;
@@ -13,43 +12,36 @@
 		}
 
 }
- var_dump(Session::all());
- echo"***";
- var_dump(Input::all());
-echo"***";
- var_dump(Input::old());
+//initialisation variables
 $ligne=Input::get('lignes');
- $nombre=Input::get('champs');
- $liste=Input::all();
- $fichierCsv=Session::get('dossCourant')."/".Input::get('nom');
- echo "nom".input::old('nom')." chemin ".Session::get('dossCourant')." = ".$fichierCsv;
+$nombre=Input::get('champs');
+$liste=Input::all();
+$fichierCsv=Session::get('dossCourant')."/".Input::get('nom');
 $nom = array();
-  $type = array();// echo  $fichierCsv;
- echo "<h3>Saisie des donnees</h3>";
+$type = array();// 
+echo "<h3>Saisie des donnees du fichier ".Input::get('nom')."</h3>";
 echo '<form action="ecritFichier" method="post">';
 echo "<input type=\"hidden\" value=\"".$fichierCsv."\" name=\"fichierCsv\" />";		
 echo "<input type=\"hidden\" value=\"".Input::get('nom')."\" name=\"nom\" />";		
 //récupération des couples nom-type
- 		foreach ($liste as $cle => $val) 
-		{
-			//print "$cle = $val\n";
-		
-			if(test("#nomChamp#", $cle))
-			{
-				$nom[]=$val;
-			}
-			if(test("#typeChamp#", $cle))
-			{
-				$type[]=$val;
-			}
-		}
+foreach ($liste as $cle => $val) //on teste chaque variable
+{
+	if(test("#nomChamp#", $cle))//si le nom de variable est nomchamp**
+	{
+		$nom[]=$val;//on ajoute au tableau des noms
+	}
+	if(test("#typeChamp#", $cle))//si le nom de variable est typechamp**
+	{
+		$type[]=$val;//on ajoute au tableau des types
+	}
+}
 
 //création du masque de saisie		
 echo "<table border=\"1\"><tr>";
 
 //en-tete
- for ($i=0;$i<$nombre;$i++)
- {
+for ($i=0;$i<$nombre;$i++)
+{
  echo "<td>".$nom[$i]."</td>";
  echo "<input type=\"hidden\" value=\"".$nom[$i]."\" name=\"champ0".$i."\" /></td>";
 }
@@ -64,10 +56,8 @@ echo "</tr>";
 for ($j=2;$j<$ligne;$j++)
 {
 	for ($i=0;$i<$nombre;$i++)
-	 {
-	 
+	{
 	 echo "<td><input type=\"".$type[$i]."\" name=\"champ".$j.$i."\" /></td>";
-	 
 	}
 	echo "</tr>";
 }

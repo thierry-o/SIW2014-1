@@ -42,7 +42,6 @@ border:2px solid #00BFFF;
 			<input type="radio" name="choix" value="consult" checked="checked" /> Consulter<br />
 			<input type="radio" name="choix" value="modif"  /> Modifier<br />
 			<input type="radio" name="choix" value="partag"  /> Partager<br />
-			<input type="radio" name="choix" value="renomm"  /> Renommer<br />
 			<input type="radio" name="choix" value="suppr"  /> Supprimer<br />
 			</p>
 			<input type="submit" name="valid" value="OK" />
