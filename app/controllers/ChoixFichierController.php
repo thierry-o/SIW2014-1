@@ -22,15 +22,18 @@ class ChoixFichierController extends BaseController {
 			//vérification du type de partage
 			$req=DB::table('partage')->where('part_fich_id', $id)->where('part_util_id', Auth::id())->first();
 			$type=$req->part_type;
+			$req=DB::table('fichier')->where('fich_id', $id)->first();
+			$dossier=$req->fich_chemin;
+//			echo $dossier;
 			//redirection vers la page correcte
 			switch ($type)
 			{
 				case 1:
-					return View::make('consultFichier');
+					return View::make('consultFichier', array('partage' => $dossier));
 //					echo("consulter");
 					break;
 				case 3:
-					return View::make('lireFichier');
+					return View::make('lireFichier', array('partage' => $dossier));
 //					echo("modifier");
 					break;
 			}

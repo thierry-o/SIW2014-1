@@ -1,10 +1,11 @@
 
 <?php
- var_dump(Session::all());
- echo"***";
+// var_dump(Session::all());
+// echo"***";
  var_dump(Input::all());
 echo"***";
- var_dump(Input::old());
+// var_dump(Input::old());
+// echo "partage".$partage;
 
 function lireCSV($fichierCsv){
 	$fic = fopen($fichierCsv, 'r');
@@ -17,10 +18,17 @@ function lireCSV($fichierCsv){
 
 
 // Set path to CSV file
-$fichierCsv = Input::get('dossier')."/".Input::get('fichier');
+if (isset($partage))//verification si ouverture d'un fichier partage
+{
+	$fichierCsv =  $partage."/".Input::get('fichier');
+}
+else
+{
+	$fichierCsv =  Input::get('dossier')."/".Input::get('fichier');
+}
 
 $csv = lireCSV($fichierCsv);
-var_dump($csv);
+//var_dump($csv);
 $nbrLigne= count($csv);
 $nbrChamp=count($csv[1]);
 

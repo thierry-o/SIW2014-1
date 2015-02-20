@@ -17,7 +17,14 @@ function lireCSV($fichierCsv){
 
 
 // Set path to CSV file
-$fichierCsv = Input::get('dossier')."/".Input::get('fichier');
+if (isset($partage))//verification si ouverture d'un fichier partage
+{
+	$fichierCsv =  $partage."/".Input::get('fichier');
+}
+else
+{
+	$fichierCsv =  Input::get('dossier')."/".Input::get('fichier');
+}
 
 $csv = lireCSV($fichierCsv);
 //var_dump($csv);
