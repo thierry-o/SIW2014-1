@@ -43,7 +43,7 @@ function list_dir($base, $cur, $level=0) {
         }
         /* l'entrée est-elle le dossier courant */
         if($file == $cur) {
-          echo"<img src=\"img/icone-dossier-ouvert.gif\"/>&nbsp;$entry<br />\n";
+          echo"<span id=\"doss_courant\"><img src=\"img/icone-dossier-ouvert.gif\"/>&nbsp; $entry</span><br />\n";
         } 
 		else {
 		  echo"<img src=\"img/icone-dossier-ferme.gif\"/>&nbsp; <a href=\"?dir=".rawurlencode($file)."\">$entry</a><br/>\n";
