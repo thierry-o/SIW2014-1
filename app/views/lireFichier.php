@@ -61,7 +61,7 @@ for ($j=3;$j<$nbrLigne;$j++)
 }
 
 echo "</table>";
-//variables envoyees
+//variables supplementaires envoyees
 echo "<input type=\"hidden\" value=\"".$nbrLigne."\" name=\"nbrLigne\" />";
 echo "<input type=\"hidden\" value=\"".$nbrChamp."\" name=\"nbrChamp\" />";
 echo '<input type="submit" name="finsaisie" value="Enregistrer" />';

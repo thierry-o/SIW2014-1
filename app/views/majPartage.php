@@ -80,17 +80,17 @@ foreach ($listeUtils as $listeUtil)
 				if (!file_exists($copie))
 				{
 					copy($fichier, $copie);
-	//				exec('ln -s $fichier $copie');
 				}
-				
-				
-				
 			}
 		}
 	}
 
 }
-
+echo "<h3>Les partages ont ete mis a jour</h3>";
+echo "<form action=\"appli\" method=\"get\">";
+echo '<input type="hidden" name="dir" value="'.Session::get('dossCourant').'" />';
+echo '<input type="submit" value="OK"/>';
+echo '</form>';
 ?>
 		</fieldset>
 	</body>

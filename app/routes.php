@@ -23,6 +23,8 @@ Route::any('consultFichier', function() {return View::make('consultFichier');});
 
 Route::post('ecritFichier', 'EcritFichierController@postEcritFichier');
 
+Route::post('editeFichier', 'EditeFichierController@postEditeFichier');
+
 Route::any('lireFichier', function() {return View::make('lireFichier');});
 
 Route::post('majPartage', 'MajPartageController@postMajPartage');

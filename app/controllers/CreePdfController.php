@@ -84,8 +84,28 @@ class CreePdfController extends BaseController {
 
     public function postCreePdf()
     {
-		//initialisation du chemin
-		$fichier=Input::get('dossier')."/".Input::get('fichier');
+		//initialisation du chemin vers le fichier a exporter
+		if (substr(Session::get('dossCourant'), -7)=="Partage")//choix d'un fichier dans le dossier "Partage"
+		{
+			//initialiosation du chemin
+			$fichier=Input::get('dossier')."/".Input::get('fichier');
+			//ouverture du fichier et lecture de la premiere ligne (contenant l'id)
+			$fic=fopen($fichier, 'r');
+			$ligne=fgets($fic);
+			fclose($fic);
+			//récupération de l'id du fichier
+			$id=intval($ligne);
+			//recuperation du chemin vers le fichier
+			$req=DB::table('fichier')->where('fich_id', $id)->first();
+			$dossier=$req->fich_chemin;
+			$fichier=$dossier."/".Input::get('fichier');
+		}
+		else//fichier non partage
+		{
+			//initialisation du chemin
+			$fichier=Input::get('dossier')."/".Input::get('fichier');
+		}
+
 		//creation du fichier
 		$pdf = new PDF();
 		//pagination

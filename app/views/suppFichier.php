@@ -27,11 +27,10 @@ else //on n'est pas dans Partage, donc on peut supprimer
 	{
 		if ($chemin->part_chemin===NULL)//chemin vide
 		{
-			echo 'non trouve';
+			echo ' Chemin non trouve';
 		}
 		else //partage trouve dans la table
 		{
-			echo('trouve');
 			//initialisation de chemin
 			$fichier=$chemin->part_chemin."/".Input::get('fichier');
 			//suppression

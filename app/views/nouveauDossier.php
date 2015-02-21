@@ -75,6 +75,10 @@ else//sinon (pas d'erreur)
 	{
 		mkdir($doss);
 		echo "Création réussie";
+		echo "<form action=\"appli\" method=\"get\">";
+		echo '<input type="hidden" name="dir" value="'.Session::get('dossCourant').'" />';
+		echo '<input type="submit" value="OK"/>';
+		echo '</form>';
 	}
 	else
 	{
