@@ -46,4 +46,4 @@ Route::any('creePdf', 'CreePdfController@postCreePdf');
 
 Route::get('logout', 'LogoutController@getLogout')->before('auth');
 
-App::missing(function() {  return 'Page inexistante !'; });
+App::missing(function() {  return 'Page introuvable !'; });

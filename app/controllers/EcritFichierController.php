@@ -4,13 +4,13 @@ class EcritFichierController extends BaseController {
 
     public function getEcritFichier()
     {
-        return View::make('EcritFichier');
+        return View::make('ecritFichier');
 
     }
 
     public function postEcritFichier()
     {
-        return View::make('EcritFichier');
+        return View::make('ecritFichier');
     }
 
 }
