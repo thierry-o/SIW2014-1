@@ -12,16 +12,16 @@ margin-top:15%;
 }
 input{
 
-background-color:#AFEEEE;
+background-color:#FFE4B5;
 padding:3px;
-border:1px solid #00BFFF;
+border:1px solid #FF7F50;
 border-radius:5px;
 }
 
 fieldset{
 width:400px;
 margin:auto;
-border:2px solid #00BFFF;
+border:2px solid #FF7F50;
 -moz-border-radius:8px;
     -webkit-border-radius:8px;	
     border-radius:8px;	
