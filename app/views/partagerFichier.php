@@ -6,35 +6,49 @@
 
 body{
 font-family:Arial;
-
 margin-left:5%;
 margin-top:15%;
 }
-input{
-
-background-color:#AFEEEE;
+input{display:block
+font-weight:bold;
+background-color:#FFE4B5;
 padding:3px;
-border:1px solid #00BFFF;
+border:1px solid #FF7F50;
 border-radius:5px;
 }
-
+select{
+font-weight:bold;
+background-color:#FFE4B5;
+padding:3px;
+border:1px solid #FF7F50;
+border-radius:5px;}
 fieldset{
 width:400px;
 margin:auto;
-border:2px solid #00BFFF;
+border:2px solid #FF7F50;
 -moz-border-radius:8px;
     -webkit-border-radius:8px;	
     border-radius:8px;	
 }
+table{
+	-moz-border-radius:8px;
+    -webkit-border-radius:8px;	
+    border-radius:8px; 
+border-spacing: 0px;
+padding: 50px;
+font-family:Arial;
+font-size:20px;
+}
+h3{color:#FF4500;}
         </style>
 	</head>
 	<body>
 		<fieldset>
 <?php
-	echo "<legend><h3>Partages du fichier : \"".Input::get('fichier')."\"</h3></legend>";
+	echo "<legend><h3>Partage du fichier : \"".Input::get('fichier')."\"</h3></legend>";
 ?>
 		<form action="majPartage" method="post">
-			<table border="1" bordercolor="gray">
+			<table>
 				
 
 <?php

@@ -1,5 +1,5 @@
 #bloc_page
-{
+{color:#FF4500;
 font-family:Arial;
 width: 900px;
 margin: auto;
@@ -7,7 +7,7 @@ margin: auto;
 
 header
 {
-/*background-color: gray;*/
+
 text-align: center;
 margin-bottom: 5px;
 }
@@ -18,13 +18,13 @@ margin-top: 5px;
 
 
 header, footer, nav, section{
-background-color: #e0e0e0;
-border:2px solid #1e93e1;
+background-color: #FFDEAD;
+border:2px solid #FF7F50;
 -moz-border-radius:8px;
     -webkit-border-radius:8px;	
     border-radius:8px;	
 }
-
+h3{color:#FF4500;}
 nav{
 }
 
@@ -39,23 +39,62 @@ width:200px;
 height: 600px;
 vertical-align: top;
 }
+#menu input{
+font-weight:bold;
+background-color:#FFE4B5;
+padding:3px;
+border:1px solid #FF7F50;
+border-radius:5px;}
 
+select{
+font-weight:bold;
+background-color:#FFE4B5;
+padding:3px;
+border:1px solid #FF7F50;
+border-radius:5px;}
 #contenu {
+
 display: inline-block;
 width:687px;
 height: 600px;
 vertical-align: top;
 }
+#contenu input{
+font-weight:bold;
+background-color:#FFE4B5;
+padding:3px;
+border:1px solid #FF7F50;
+border-radius:5px;
+}
+input{
+font-weight:bold;
+background-color:#FFE4B5;
+padding:3px;
+border:1px solid #FF7F50;
+border-radius:5px;
+}
 
+#contenu fieldset{
+width:400px;
+margin:auto;
+border:2px solid #FF7F50;
+-moz-border-radius:8px;
+    -webkit-border-radius:8px;	
+    border-radius:8px;	
+}
 a {
 text-decoration: none;
 color: black;
 }
 
-#table_appli td{
-border: 1px solid gray; 
+#table_appli td{-moz-border-radius:8px;
+    -webkit-border-radius:8px;	
+    border-radius:8px;
+border: 1px solid #FF7F50 ; 
 border-spacing: 0px;
-padding: 10px;
+padding: 50px;
+font-family:Arial;
+font-size:20px;
 }
 #doss_courant{
 color: red;

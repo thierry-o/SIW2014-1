@@ -2,6 +2,10 @@
 
 
 @section('contenu')
+<html>
+<head>
+<link rel="stylesheet" href="css/style.css" /></br></br>
+</head>
 <fieldset><br>
 	<legend><h3>Nouveau Fichier</h3></legend>
 <?php
@@ -19,6 +23,7 @@ else //on n'est pas dans Partage, donc on peut créer
 	if ((!Input::has('validnouv')) | ($errors->has('nom')))//s'il y a des erreurs ou si c'est la première entrée, on affiche le formulaire
 	{
 	?>	
+	
 			<form action="nouveauFichier" method="post">
 				<table>				
 				<tr><td>Nom du Fichier : </td><td><input type="text" name="nom" id="nom" value="" required/></td></tr>
@@ -37,7 +42,7 @@ else //on n'est pas dans Partage, donc on peut créer
 				<input type="submit" value="Valider" name="validnouv" />
 			</form>
 			<form action="appli" method="get">
-				<input type="hidden" name="dir" value="<?php echo Session::get('dossCourant'); ?>" />
+				<input type="hidden" name="dir" value="<?php echo Session::get('dossCourant'); ?>" /> <br>
 				<input type="submit" value="Annuler" name="Annuler" />
 			</form>
 	<?php
@@ -85,4 +90,5 @@ else //on n'est pas dans Partage, donc on peut créer
 	}
 }
 ?>
+</html>
 @stop

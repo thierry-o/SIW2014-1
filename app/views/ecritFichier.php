@@ -1,4 +1,4 @@
-
+<link rel="stylesheet" href="css/style.css" /></br></br>
 <?php
 //initialisation des variables
 $fichierCsv=Input::get('fichierCsv');

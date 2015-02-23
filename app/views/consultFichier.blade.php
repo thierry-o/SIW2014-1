@@ -56,12 +56,14 @@ for ($j=3;$j<$nbrLigne;$j++)//creation des lignes
 }
 
 echo "</table>";
+echo "<br />";
 echo '<input type="submit" name="finConsult" value="Fermer" />';
 echo '</form>';
 echo '<form action="creePdf" method="post">';
 //passage des variables
 echo "<input type=\"hidden\" name=\"fichier\" value=\"".Input::get('fichier')."\" />";
 echo "<input type=\"hidden\" name=\"dossier\" value=\"".Input::get('dossier')."\" />";
+echo "<br />";
 echo '<input type="submit" name="pdf" value="Export en PDF" />';
 echo '</form>';
 ?>

@@ -1,4 +1,29 @@
-
+<style>
+body{
+font-family:Arial;
+margin-left:35%;
+margin-top:15%;
+}
+ input{
+font-weight:bold;
+background-color:#FFE4B5;
+padding:3px;
+border:1px solid #FF7F50;
+border-radius:5px;}
+h3{color:#FF4500;}
+table{
+	background-color:#FFE4B5;
+	-moz-border-radius:8px;
+    -webkit-border-radius:8px;	
+    border-radius:8px;
+border: 1px solid #FF7F50 ; 
+border-spacing: 0px;
+padding: 50px;
+font-family:Arial;
+font-size:20px;
+}
+</style>
+<body>
 <?php
 function test($modele, $sujet) 
 {
@@ -19,7 +44,7 @@ $liste=Input::all();
 $fichierCsv=Session::get('dossCourant')."/".Input::get('nom');
 $nom = array();
 $type = array();// 
-echo "<h3>Saisie des donnees du fichier ".Input::get('nom')."</h3>";
+echo "<h3>Saisie des données du fichier ".Input::get('nom')."</h3>";
 echo '<form action="ecritFichier" method="post">';
 echo "<input type=\"hidden\" value=\"".$fichierCsv."\" name=\"fichierCsv\" />";		
 echo "<input type=\"hidden\" value=\"".Input::get('nom')."\" name=\"nom\" />";		
@@ -37,7 +62,7 @@ foreach ($liste as $cle => $val) //on teste chaque variable
 }
 
 //création du masque de saisie		
-echo "<table border=\"1\"><tr>";
+echo "<table><tr>";
 
 //en-tete
 for ($i=0;$i<$nombre;$i++)
@@ -65,7 +90,9 @@ echo"</table>";
 echo "<input type=\"hidden\" value=\"".$ligne."\" name=\"nbrLigne\" />";
 echo "<input type=\"hidden\" value=\"".$ligne."\" name=\"nbrLigne\" />";
 echo "<input type=\"hidden\" value=\"".$nombre."\" name=\"nbrChamp\" />";
+echo"</br>";
 echo '<input type="submit" name="finsaisie" value="Enregistrer" />';
 echo '</form>';
 
  ?>
+ </body>

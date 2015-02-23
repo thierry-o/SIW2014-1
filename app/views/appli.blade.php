@@ -89,7 +89,8 @@ function list_file($cur) {
   }
 }
 ?>
-
+</br></br></br>
+<center>
 <table id="table_appli">
 <tr valign="top"><td>
 
@@ -124,10 +125,11 @@ list_file(rawurldecode($dir));
 
 </td></tr>
 </table>
-		
+</table>
+		&nbsp;
 		<form action="nouveauFichier" method="post">
 			<input type="submit" value="Nouveau fichier" name="nouvfich" />
-		</form>
+		</form>&nbsp;
 		<form action="nouveauDossier" method="post">
 			<input type="submit" value="Nouveau dossier" name="nouvdoss" />
 		</form>

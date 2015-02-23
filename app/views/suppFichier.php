@@ -1,4 +1,4 @@
-
+<link rel="stylesheet" href="css/style.css" />
 <?php
 //initialisation du chemin
 $fichier=Input::get('dossier')."/".Input::get('fichier');
@@ -37,7 +37,7 @@ else //on n'est pas dans Partage, donc on peut supprimer
 			unlink($fichier);
 		}
 	}
-	echo "<h3>Le ficher a ete supprime</h3>";
+	echo "<h3>Le ficher a été supprimé</h3>";
 	echo "<form action=\"appli\" method=\"get\">";
 	echo '<input type="hidden" name="dir" value="'.Session::get('dossCourant').'" />';
 	echo '<input type="submit" value="OK"/>';

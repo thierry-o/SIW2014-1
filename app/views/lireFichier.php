@@ -1,4 +1,30 @@
 
+<link rel="stylesheet" href="css/style.css" />
+<style>
+body{
+font-family:Arial;
+margin-left:40%;
+margin-top:15%;
+}
+table{
+	-moz-border-radius:8px;
+    -webkit-border-radius:8px;	
+    border-radius:8px; 
+border-spacing: 0px;
+border:1px solid #FF7F50;
+padding: 50px;
+font-family:Arial;
+font-size:20px;
+}
+input,td{
+display:block
+font-weight:bold;
+background-color:#FFE4B5;
+padding:3px;
+border:1px solid #FF7F50;
+border-radius:5px;
+}
+</style>
 <?php
 //fonction de conversion de csv en tableau
 function lireCSV($fichierCsv){
@@ -27,7 +53,7 @@ $nbrLigne= count($csv);
 $nbrChamp=count($csv[1]);
 $idFichier=$csv[0][0];
 //affichage du formulaire
-echo "<h3>Saisie des donnees</h3>";
+echo "<h3>Modification des données</h3>";
 echo '<form action="editeFichier" method="post">';
 //envoi masqué des variables
 echo "<input type=\"hidden\" value=\"".$fichierCsv."\" name=\"fichierCsv\" />";
@@ -60,7 +86,8 @@ for ($j=3;$j<$nbrLigne;$j++)
 	echo "</tr>";
 }
 
-echo "</table>";
+echo "</table>";echo "</br>";
+
 //variables supplementaires envoyees
 echo "<input type=\"hidden\" value=\"".$nbrLigne."\" name=\"nbrLigne\" />";
 echo "<input type=\"hidden\" value=\"".$nbrChamp."\" name=\"nbrChamp\" />";

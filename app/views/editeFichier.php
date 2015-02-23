@@ -1,4 +1,11 @@
+<html>
+<head>
+<link rel="stylesheet" href="css/style.css" />
+<style>
 
+h3{color:#FF4500;}
+        </style>
+</head>
 <?php
 //enregistrement du fichier edite
 //initialisatino des variables
@@ -30,3 +37,5 @@ echo "<form action=\"appli\" method=\"get\">";
 echo '<input type="hidden" name="dir" value="'.Session::get('dossCourant').'" />';
 echo '<input type="submit" value="OK"/>';
 echo '</form>';
+?>
+</html>
