@@ -4,8 +4,6 @@
 @section('contenu')
 
 <?php
-// var_dump(Session::all());
-// var_dump(Input::all());
 //initialisation
 $BASE =$_SERVER['DOCUMENT_ROOT']."/SIW2014-1/app/documents/". Auth::user()->util_pseudo;
 $PHP_SELF=$_SERVER['PHP_SELF'];
@@ -26,9 +24,8 @@ elseif (Session::has('dosscourant'))//sinon si la session contient le dossier co
 else//sinon (1ere entrée ) on initialise
 {
 	$dir =$BASE;
-	Session::put($BASE);
+	Session::put('dossCourant', $BASE);
 }
-// var_dump(Session::all());
 	
 function list_dir($base, $cur, $level=0) {
   global $PHP_SELF, $BASE;
