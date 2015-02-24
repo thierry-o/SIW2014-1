@@ -1,6 +1,7 @@
+@extends('modele_base')
+@section('contenu')
 <html>
 <head>
-<link rel="stylesheet" href="css/style.css" />
 <style>
 
 h3{color:#FF4500;}
@@ -32,10 +33,11 @@ $fic = fopen($fichierCsv,"w+");
 fputs($fic, $donnees);
 fclose($fic);
 //echo $donnees;
-echo "<h3>Le ficher a ete modifie</h3>";
+echo "<h3>Le ficher a été modifie</h3>";
 echo "<form action=\"appli\" method=\"get\">";
 echo '<input type="hidden" name="dir" value="'.Session::get('dossCourant').'" />';
 echo '<input type="submit" value="OK"/>';
 echo '</form>';
 ?>
+@stop
 </html>

@@ -1,14 +1,12 @@
+@extends('modele_base')
+@section('contenu')
 <html>
 	<head>
 	 
 		<script type="text/javascript" src="js/fonctions.js"></script>
 				<style>
 
-body{
-font-family:Arial;
-margin-left:5%;
-margin-top:15%;
-}
+
 input{display:block
 font-weight:bold;
 background-color:#FFE4B5;
@@ -43,6 +41,8 @@ h3{color:#FF4500;}
         </style>
 	</head>
 	<body>
+	<br>
+	<br>
 		<fieldset>
 <?php
 	echo "<legend><h3>Partage du fichier : \"".Input::get('fichier')."\"</h3></legend>";
@@ -118,5 +118,6 @@ foreach ($listeUtils as $listeUtil)
 				<input type="submit" value="Annuler" name="Annuler" />
 			</form>
 		</fieldset>
+		@stop
 	</body>
 </html>

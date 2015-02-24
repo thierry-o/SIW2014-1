@@ -1,15 +1,10 @@
+@extends('modele_base')
+@section('contenu')
 <html>
 	<head>
 	 
 		<script type="text/javascript" src="js/fonctions.js"></script>
 				<style>
-
-body{
-font-family:Arial;
-
-margin-left:5%;
-margin-top:15%;
-}
 input{
 
 background-color:#FFE4B5;
@@ -29,6 +24,8 @@ border:2px solid #FF7F50;
         </style>
 	</head>
 <body>
+<br>
+<br>
 <fieldset>
 	<legend><h3>Nouveau Dossier</h3></legend>
 <?php
@@ -62,6 +59,7 @@ if ($errors->has('nom'))//affichage des erreurs sur le nom
 			<!--formulaire-bouton d'annulation-->
 			<form action="appli" method="get">
 				<input type="hidden" name="dir" value="<?php echo Session::get('dossCourant'); ?>" />
+				<br>
 				<input type="submit" value="Annuler" name="Annuler" />
 			</form>
 		
@@ -97,3 +95,4 @@ else//sinon (pas d'erreur)
 ?>
 </body>
 </html>
+@stop

@@ -1,4 +1,5 @@
-<link rel="stylesheet" href="css/style.css" />
+@extends('modele_base')
+@section('contenu')
 <?php
 //initialisation du chemin
 $fichier=Input::get('dossier')."/".Input::get('fichier');
@@ -43,3 +44,5 @@ else //on n'est pas dans Partage, donc on peut supprimer
 	echo '<input type="submit" value="OK"/>';
 	echo '</form>';
 }
+?>
+@stop

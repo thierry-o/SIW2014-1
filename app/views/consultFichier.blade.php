@@ -1,6 +1,4 @@
 @extends('modele_base')
-
-
 @section('contenu')
 
 <?php

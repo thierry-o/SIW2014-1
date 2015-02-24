@@ -1,15 +1,17 @@
-<link rel="stylesheet" href="css/style.css" /></br></br>
+@extends('modele_base')
+@section('contenu')
+
 <?php
 //initialisation des variables
 $fichierCsv=Input::get('fichierCsv');
 $nbrLigne=Input::get('nbrLigne');
 $nbrChamp=Input::get('nbrChamp');
 $donnees="";//donnees a inscrire
-//création de la ligne du fichier dans la base de données
+//cr?ion de la ligne du fichier dans la base de donn?
 DB::table('fichier')->insert(array('fich_nom' => Input::get('nom'), 'fich_chemin' => Session::get('dossCourant'), 'fich_proprio' => (Auth::user()->id)));
 //recuperation de l'id du fichier cree
 $id = DB::table('fichier')->select('fich_id', 'fich_nom')->where('fich_nom', Input::get('nom'))->where('fich_chemin', Session::get('dossCourant'))->first();
-//ajout le d'id en tête de fichier
+//ajout le d'id en t? de fichier
 $donnees=$id->fich_id."\n";
 //ajout des donnees
 for ($j=0;$j<$nbrLigne;$j++)
@@ -33,3 +35,5 @@ echo "<form action=\"appli\" method=\"get\">";
 echo '<input type="hidden" name="dir" value="'.Session::get('dossCourant').'" />';
 echo '<input type="submit" value="OK"/>';
 echo '</form>';
+?>
+@stop

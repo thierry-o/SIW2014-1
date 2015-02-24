@@ -1,11 +1,6 @@
-
-<link rel="stylesheet" href="css/style.css" />
+@extends('modele_base')
+@section('contenu')
 <style>
-body{
-font-family:Arial;
-margin-left:40%;
-margin-top:15%;
-}
 table{
 	-moz-border-radius:8px;
     -webkit-border-radius:8px;	
@@ -100,3 +95,4 @@ echo "<input type=\"hidden\" name=\"dossier\" value=\"".Input::get('dossier')."\
 echo '<input type="submit" name="pdf" value="Export en PDF" />';
 echo '</form>';
 ?>
+@stop

@@ -1,28 +1,5 @@
-<style>
-body{
-font-family:Arial;
-margin-left:35%;
-margin-top:15%;
-}
- input{
-font-weight:bold;
-background-color:#FFE4B5;
-padding:3px;
-border:1px solid #FF7F50;
-border-radius:5px;}
-h3{color:#FF4500;}
-table{
-	background-color:#FFE4B5;
-	-moz-border-radius:8px;
-    -webkit-border-radius:8px;	
-    border-radius:8px;
-border: 1px solid #FF7F50 ; 
-border-spacing: 0px;
-padding: 50px;
-font-family:Arial;
-font-size:20px;
-}
-</style>
+@extends('modele_base')
+@section('contenu')
 <body>
 <?php
 function test($modele, $sujet) 
@@ -95,4 +72,5 @@ echo '<input type="submit" name="finsaisie" value="Enregistrer" />';
 echo '</form>';
 
  ?>
+ @stop
  </body>

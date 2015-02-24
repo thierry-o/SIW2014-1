@@ -1,34 +1,15 @@
+@extends('modele_base')
+@section('contenu')
 <html>
 	<head>
 	 
 		<script type="text/javascript" src="js/fonctions.js"></script>
-				<style>
+		<link rel="stylesheet" href="css/style.css" />
 
-body{
-font-family:Arial;
-
-margin-left:5%;
-margin-top:15%;
-}
-input{
-
-background-color:#FFE4B5;
-padding:3px;
-border:1px solid #FF7F50;
-border-radius:5px;
-}
-
-fieldset{
-width:400px;
-margin:auto;
-border:2px solid #FF7F50;
--moz-border-radius:8px;
-    -webkit-border-radius:8px;	
-    border-radius:8px;	
-}
-        </style>
 	</head>
 	<body>
+	<br>
+	<br>
 		<fieldset>
 <?php
 			echo "<legend><h3>Fichier : \"".Input::get('fichier')."\"</h3></legend>";
@@ -52,4 +33,5 @@ border:2px solid #FF7F50;
 			</form>
 		</fieldset>
 	</body>
+	@stop
 </html>
