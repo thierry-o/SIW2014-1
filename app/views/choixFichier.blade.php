@@ -1,15 +1,5 @@
 @extends('modele_base')
 @section('contenu')
-<html>
-	<head>
-	 
-		<script type="text/javascript" src="js/fonctions.js"></script>
-		<link rel="stylesheet" href="css/style.css" />
-
-	</head>
-	<body>
-	<br>
-	<br>
 		<fieldset>
 <?php
 			echo "<legend><h3>Fichier : \"".Input::get('fichier')."\"</h3></legend>";
@@ -32,6 +22,4 @@
 				<input type="submit" value="Annuler" name="Annuler" />
 			</form>
 		</fieldset>
-	</body>
-	@stop
-</html>
+@stop

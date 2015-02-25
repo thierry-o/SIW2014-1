@@ -13,8 +13,8 @@
 
 Route::get('appli',  function()	{return View::make('appli');})->before('auth');
 
-Route::get('choixFichier', 'ChoixFichierController@getChoixFichier');//->before('guest');
-Route::post('choixFichier', 'ChoixFichierController@postChoixFichier');//->before('guest');
+Route::get('choixFichier', 'ChoixFichierController@getChoixFichier');
+Route::post('choixFichier', 'ChoixFichierController@postChoixFichier');
 
 Route::get('connexion', 'ConnexionController@getConnexion')->before('guest');
 Route::post('connexion', 'ConnexionController@postConnexion');
