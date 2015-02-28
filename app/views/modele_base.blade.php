@@ -24,6 +24,12 @@
 				</br>
 				<div><center><input type="button" value="Accueil", name="accueil" onClick="BoutonAnnuler()"/></center></div>
 				</br>
+				<div>
+				<?php if (isset(Auth::user()->util_categ)&&(Auth::user()->util_categ=='adm'))
+				{echo '<center><input type="button" value="Gestion Utilisateurs", name="gestion" onClick="BoutonGestionUtils()"/></center>';}
+				else {echo '<br />';}
+				?>
+				</div>
 				<br><br><center>
 				<img src="img/ccimartinique.jpg" width="150" height="100"></br><br>
 				<img src="img/uag.jpg" width="150" height="100"></br><br>

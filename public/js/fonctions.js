@@ -28,3 +28,7 @@ function BoutonDeconnecter()
 {
 	document.location.href='logout';
 }
+function BoutonGestionUtils()
+{
+	document.location.href='gestUtil';
+}

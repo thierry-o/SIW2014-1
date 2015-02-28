@@ -24,7 +24,10 @@ border:2px solid #FF7F50;
     -webkit-border-radius:8px;	
     border-radius:8px;	
 }
-h3{color:#FF4500;}
+
+h3{
+color:#FF4500;}
+
 nav{
 }
 
@@ -98,4 +101,7 @@ font-size:20px;
 }
 #doss_courant{
 color: red;
+}
+#nom_util{
+text-align: center;
 }
