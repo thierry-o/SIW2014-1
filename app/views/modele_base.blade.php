@@ -17,11 +17,14 @@
 
 			</header>
 			<nav id="menu">
-			</br></br></br></br></br>
+			</br>
+			<h3 id="nom_util"><?php if (isset(Auth::user()->util_pseudo)) {echo(Auth::user()->util_pseudo);} else {echo '<br />';} ?></h3>
+			
 				<div><center><input type="button" value="Deconnexion", name="bouton3" id="bouton3" onClick="BoutonDeconnecter()"/></center></div>
 				</br>
 				<div><center><input type="button" value="Accueil", name="accueil" onClick="BoutonAnnuler()"/></center></div>
-				<br><br><br><center>
+				</br>
+				<br><br><center>
 				<img src="img/ccimartinique.jpg" width="150" height="100"></br><br>
 				<img src="img/uag.jpg" width="150" height="100"></br><br>
 				<img src="img/cnam.png" width="150" height="100">
