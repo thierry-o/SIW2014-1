@@ -2,10 +2,6 @@
 
 
 @section('contenu')
-<html>
-<head>
-<link rel="stylesheet" href="css/style.css" /></br></br>
-</head>
 <fieldset><br>
 	<legend><h3>Nouveau Fichier</h3></legend>
 <?php
@@ -90,5 +86,5 @@ else //on n'est pas dans Partage, donc on peut créer
 	}
 }
 ?>
-</html>
+
 @stop
