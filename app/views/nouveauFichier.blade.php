@@ -16,7 +16,7 @@ if (substr(Session::get('dossCourant'), -7)=="Partage")//tentative de creer un f
 }
 else //on n'est pas dans Partage, donc on peut créer
 {
-	if ((!Input::has('validnouv')) | ($errors->has('nom')))//s'il y a des erreurs ou si c'est la première entrée, on affiche le formulaire
+	if ((!Input::has('validnouv')) | ($errors->has('nom')) | ($errors->has('champs')))//s'il y a des erreurs ou si c'est la première entrée, on affiche le formulaire
 	{
 	?>	
 	
@@ -31,6 +31,11 @@ else //on n'est pas dans Partage, donc on peut créer
 		if ($errors->has('nom'))//erreur sur le nom
 		{
 			echo $errors->first('nom');//affichage erreurs
+			echo "<br />";
+		}
+		if ($errors->has('champs'))//erreur sur le nom
+		{
+			echo $errors->first('champs');//affichage erreurs
 			echo "<br />";
 		}
 	?>

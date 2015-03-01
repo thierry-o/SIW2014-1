@@ -13,12 +13,17 @@ class NouveauFichierController extends BaseController {
     {
 		 if (Input::has('validnouv'))//entrée suite à première validation
 		 {
-			$validation = Validator::make(
-				array('nom' => Input::get('nom')),
-				array('nom' => 'required|min:3|max:20|alpha_num'),
-				array('champs' => Input::get('champs')),
-				array('champs' => 'required|min:1|max:10')
-				);
+				$champs=intval(Input::get('champs'));
+				$validation = Validator::make(
+				array(
+					'nom' => Input::get('nom'),
+					'champs' => $champs
+				),
+				array(
+					'nom' => 'required|min:3|max:20|alpha_num',
+					'champs' => 'required|integer|min:1|max:10'
+				)
+			);
 			if ($validation->fails()) //erreur de saisie
 			{
 				//retour des erreurs
