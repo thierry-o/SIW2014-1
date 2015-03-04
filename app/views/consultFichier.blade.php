@@ -2,7 +2,7 @@
 @section('contenu')
 
 <?php
-
+//fonctin de lecture du fichier
 function lireCSV($fichierCsv){
 	$fic = fopen($fichierCsv, 'r');
 	while (!feof($fic) ) {
@@ -57,6 +57,7 @@ echo "</table>";
 echo "<br />";
 echo '<input type="submit" name="finConsult" value="Fermer" />';
 echo '</form>';
+//bouton d'export PDF
 echo '<form action="creePdf" method="post">';
 //passage des variables
 echo "<input type=\"hidden\" name=\"fichier\" value=\"".Input::get('fichier')."\" />";

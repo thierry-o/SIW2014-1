@@ -1,6 +1,5 @@
 @extends('modele_base')
 @section('contenu')
-<body>
 <?php
 function test($modele, $sujet) 
 {
@@ -73,4 +72,3 @@ echo '</form>';
 
  ?>
  @stop
- </body>

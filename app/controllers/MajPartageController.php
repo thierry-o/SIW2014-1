@@ -5,7 +5,7 @@ class MajPartageController extends BaseController {
     public function getMajPartage()
 
     {
-			echo ("get");
+			//echo ("get");
 			
 
     }

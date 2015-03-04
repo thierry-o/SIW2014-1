@@ -40,7 +40,7 @@ class ChoixFichierController extends BaseController {
 		}
     }
 
-    public function postChoixFichier()
+    public function postChoixFichier()//affichage de la vue en fonction du choix de l'utilisateur
     {
 	   switch (Input::get('choix'))
 	   {

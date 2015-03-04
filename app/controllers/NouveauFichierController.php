@@ -13,8 +13,8 @@ class NouveauFichierController extends BaseController {
     {
 		 if (Input::has('validnouv'))//entrée suite à première validation
 		 {
-				$champs=intval(Input::get('champs'));
-				$validation = Validator::make(
+			$champs=intval(Input::get('champs'));
+			$validation = Validator::make(
 				array(
 					'nom' => Input::get('nom'),
 					'champs' => $champs

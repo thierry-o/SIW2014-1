@@ -28,8 +28,11 @@ for ($j=0;$j<$nbrLigne;$j++)
 $donnees=substr($donnees, 0, -1);
 //ouverture du fichier
 $fic = fopen($fichierCsv,"w+");
+//ecriture
 fputs($fic, $donnees);
+//fermeture
 fclose($fic);
+//formulaire de confirmation
 echo "<h3>Le ficher a ete cree</h3>";
 echo "<form action=\"appli\" method=\"get\">";
 echo '<input type="hidden" name="dir" value="'.Session::get('dossCourant').'" />';

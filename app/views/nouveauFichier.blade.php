@@ -59,7 +59,7 @@ else //on n'est pas dans Partage, donc on peut créer
 		{
 			echo '<form action="saisieFichier" method="POST">';	//formulaire de saisie
 
-			for ($i=1; $i<=$nombre;$i++)
+			for ($i=1; $i<=$nombre;$i++)//pour chaque champ
 			{
 				echo "Champ $i :<br />
 					Nom : <input type=\"text\" name=\"nomChamp$i\" required><br />
@@ -69,6 +69,7 @@ else //on n'est pas dans Partage, donc on peut créer
 						<option value=\"email\">Mail</option>
 					</select></br>";
 			}
+			//variable à passer à la vue suivante
 			echo "<input type=\"hidden\" value=\"".Input::get('nom')."\" name=\"nom\" />";
 			echo "<input type=\"hidden\" value=\"".$nombre."\" name=\"champs\" />";
 			echo "<input type=\"hidden\" value=\"".$ligne."\" name=\"lignes\" />";

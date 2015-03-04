@@ -13,36 +13,36 @@
 
 Route::get('appli',  function()	{return View::make('appli');})->before('auth');
 
-Route::get('choixFichier', 'ChoixFichierController@getChoixFichier');
-Route::post('choixFichier', 'ChoixFichierController@postChoixFichier');
+Route::get('choixFichier', 'ChoixFichierController@getChoixFichier')->before('auth');
+Route::post('choixFichier', 'ChoixFichierController@postChoixFichier')->before('auth');
 
 Route::get('connexion', 'ConnexionController@getConnexion')->before('guest');
-Route::post('connexion', 'ConnexionController@postConnexion');
+Route::post('connexion', 'ConnexionController@postConnexion')->before('guest');
 
-Route::any('consultFichier', function() {return View::make('consultFichier');});
+Route::any('consultFichier', function() {return View::make('consultFichier');})->before('auth');
 
-Route::post('ecritFichier', 'EcritFichierController@postEcritFichier');
+Route::post('ecritFichier', 'EcritFichierController@postEcritFichier')->before('auth');
 
-Route::post('editeFichier', 'EditeFichierController@postEditeFichier');
+Route::post('editeFichier', 'EditeFichierController@postEditeFichier')->before('auth');
 
-Route::any('lireFichier', function() {return View::make('lireFichier');});
+Route::any('lireFichier', function() {return View::make('lireFichier');})->before('auth');
 
-Route::post('majPartage', 'MajPartageController@postMajPartage');
+Route::post('majPartage', 'MajPartageController@postMajPartage')->before('auth');
 
-Route::get('nouveauDossier', 'NouveauDossierController@getNouveauDossier');//->before('guest');
-Route::post('nouveauDossier', 'NouveauDossierController@postNouveauDossier');
+Route::get('nouveauDossier', 'NouveauDossierController@getNouveauDossier')->before('auth');
+Route::post('nouveauDossier', 'NouveauDossierController@postNouveauDossier')->before('auth');
 
-Route::get('nouveauFichier', 'NouveauFichierController@getNouveauFichier');//->before('guest');
-Route::post('nouveauFichier', 'NouveauFichierController@postNouveauFichier');
+Route::get('nouveauFichier', 'NouveauFichierController@getNouveauFichier')->before('auth');
+Route::post('nouveauFichier', 'NouveauFichierController@postNouveauFichier')->before('auth');
 
-Route::any('ouvrePartage', function() {return View::make('partagerFichier');});
+Route::any('ouvrePartage', function() {return View::make('partagerFichier');})->before('auth');
 
-Route::get('saisieFichier', 'SaisieFichierController@getSaisieFichier');
-Route::post('saisieFichier', 'SaisieFichierController@postSaisieFichier');
+Route::get('saisieFichier', 'SaisieFichierController@getSaisieFichier')->before('auth');
+Route::post('saisieFichier', 'SaisieFichierController@postSaisieFichier')->before('auth');
 
-Route::any('suppFichier', function() {return View::make('suppFichier');});
+Route::any('suppFichier', function() {return View::make('suppFichier');})->before('auth');
 
-Route::any('creePdf', 'CreePdfController@postCreePdf');
+Route::any('creePdf', 'CreePdfController@postCreePdf')->before('auth');
 
 Route::get('logout', 'LogoutController@getLogout')->before('auth');
 

@@ -1,31 +1,5 @@
 @extends('modele_base')
 @section('contenu')
-<html>
-	<head>
-	 
-		<script type="text/javascript" src="js/fonctions.js"></script>
-				<style>
-input{
-
-background-color:#FFE4B5;
-padding:3px;
-border:1px solid #FF7F50;
-border-radius:5px;
-}
-
-fieldset{
-width:400px;
-margin:auto;
-border:2px solid #FF7F50;
--moz-border-radius:8px;
-    -webkit-border-radius:8px;	
-    border-radius:8px;	
-}
-        </style>
-	</head>
-<body>
-<br>
-<br>
 <fieldset>
 	<legend><h3>Nouveau Dossier</h3></legend>
 <?php
@@ -71,9 +45,9 @@ else//sinon (pas d'erreur)
 	$doss=Session::get('dossCourant')."/".Input::get('nom');
 	if (!File::isDirectory($doss))//vérification de l'existence du dossier
 	{
-		mkdir($doss);
+		mkdir($doss);//creation de dossier
 		echo "Création réussie";
-		echo "<form action=\"appli\" method=\"get\">";
+		echo "<form action=\"appli\" method=\"get\">";//formulaire de confirmation
 		echo '<input type="hidden" name="dir" value="'.Session::get('dossCourant').'" />';
 		echo '<input type="submit" value="OK"/>';
 		echo '</form>';
@@ -93,6 +67,4 @@ else//sinon (pas d'erreur)
 	}
 }
 ?>
-</body>
-</html>
 @stop

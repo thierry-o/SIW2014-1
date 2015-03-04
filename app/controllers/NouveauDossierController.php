@@ -13,7 +13,7 @@ class NouveauDossierController extends BaseController {
     {
 	 if (Input::has('validnouv'))//entrée suite à premiere validation dans la vue
 	 {
-		$validation = Validator::make(
+		$validation = Validator::make(//critéres de validation
 			array('nom' => Input::get('nom')),
 			array('nom' => 'required|min:3|max:20|alpha_num')
 			);

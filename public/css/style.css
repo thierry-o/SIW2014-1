@@ -55,13 +55,14 @@ background-color:#FFE4B5;
 padding:3px;
 border:1px solid #FF7F50;
 border-radius:5px;}
-#contenu {
 
+#contenu {
 display: inline-block;
 width:687px;
 height: 600px;
 vertical-align: top;
 }
+
 #contenu input{
 font-weight:bold;
 background-color:#FFE4B5;
@@ -69,6 +70,7 @@ padding:3px;
 border:1px solid #FF7F50;
 border-radius:5px;
 }
+
 input{
 font-weight:bold;
 background-color:#FFE4B5;
@@ -85,6 +87,7 @@ border:2px solid #FF7F50;
     -webkit-border-radius:8px;	
     border-radius:8px;	
 }
+
 a {
 text-decoration: none;
 color: black;
@@ -98,10 +101,17 @@ border-spacing: 0px;
 padding: 50px;
 font-family:Arial;
 font-size:20px;
+min-width:140px;
 }
+
 #doss_courant{
 color: red;
 }
+
 #nom_util{
 text-align: center;
+}
+
+.erreur{
+color: black;
 }

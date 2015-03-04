@@ -1,25 +1,5 @@
 @extends('modele_base')
 @section('contenu')
-<style>
-table{
-	-moz-border-radius:8px;
-    -webkit-border-radius:8px;	
-    border-radius:8px; 
-border-spacing: 0px;
-border:1px solid #FF7F50;
-padding: 50px;
-font-family:Arial;
-font-size:20px;
-}
-input,td{
-display:block
-font-weight:bold;
-background-color:#FFE4B5;
-padding:3px;
-border:1px solid #FF7F50;
-border-radius:5px;
-}
-</style>
 <?php
 //fonction de conversion de csv en tableau
 function lireCSV($fichierCsv){

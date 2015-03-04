@@ -59,6 +59,7 @@ foreach ($listeUtils as $listeUtil)
 	}
 
 }
+//confirmation et retour accueil
 echo "<h3>Les partages ont ete mis a jour</h3>";
 echo "<form action=\"appli\" method=\"get\">";
 echo '<input type="hidden" name="dir" value="'.Session::get('dossCourant').'" />';

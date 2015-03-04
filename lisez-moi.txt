@@ -1,0 +1,4 @@
+Pour que l'applicatin fonctionne, il faut indiquer le chemin correct :
+-dans le fichier appli.blade.php ligne 9  $BASE =$_SERVER['DOCUMENT_ROOT']."/SIW2014-1/app/documents/"
+remplacer SIW2014-1 si nécessaire,
+-dans le fichier CreePdfController, lignes 3 et 121, renseigner le chemin correct.
