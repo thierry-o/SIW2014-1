@@ -49,11 +49,23 @@ class PDF extends FPDF
 		$this->SetFont('','B');
 		//calcul de la largeur des colonnes
 		$nbCol=count($header);
-		$largeurTableau=190;
-		$w =(int) $largeurTableau/$nbCol;
+		if ($nbCol<4)
+		{
+			$w=50;
+			$largeurTableau=$nbCol*$w;
+			$decalage=95-25*$nbCol;
+		}
+		else
+		{
+			$largeurTableau=190;
+			$w =(int) $largeurTableau/$nbCol;
+			$decalage=1;
+		}
 		// En-tête
+		// Décalage à droite
+		$this->Cell($decalage);
 		for($i=0;$i<$nbCol;$i++)
-			$this->Cell($w,7,$header[$i],1,0,'C',true);
+		$this->Cell($w,7,$header[$i],1,0,'C',true);
 		$this->Ln();
 		// Restauration des couleurs et de la police
 		$this->SetFillColor(224,235,255);
@@ -66,6 +78,8 @@ class PDF extends FPDF
 		{
 			if ($numligne>2)
 			{
+				// Décalage à droite
+				$this->Cell($decalage);
 				for ($i=0; $i<$nbCol;$i++)
 				{
 					$this->Cell($w,6,$row[$i],'LR',0,'L',$fill);
@@ -76,6 +90,8 @@ class PDF extends FPDF
 			$numligne++;
 		}
 		// Trait de terminaison
+		// Décalage à droite
+		$this->Cell($decalage);
 		$this->Cell($largeurTableau,0,'','T');
 	}
 }
